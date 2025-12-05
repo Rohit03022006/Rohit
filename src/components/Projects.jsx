@@ -77,7 +77,7 @@ const Projects = () => {
     {
       id: 4,
       title: "Recipe Manager",
-      image: "https://raw.githubusercontent.com/Rohit03022006/Recipe-Manager/main/screenshots/main.png",
+      image: "https://raw.githubusercontent.com/Rohit03022006/Recipe-Manager/main/Images/Web/base.png",
       description: "A comprehensive recipe management application with search and favorite features.",
       githubUrl: "https://github.com/Rohit03022006/Recipe-Manager/",
       liveUrl: null,
@@ -193,29 +193,24 @@ const Projects = () => {
 
         {/* Filter Buttons */}
         <motion.div
-          className="flex flex-wrap justify-center gap-4 mb-12"
+          className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12"
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
         >
           {filters.map((filter) => (
             <motion.button
               key={filter.id}
-              animate={activeFilter === filter.id ? "active" : "visible"}
-              whileHover="hover"
-              whileTap="tap"
               onClick={() => setActiveFilter(filter.id)}
-              className={`px-6 py-3 rounded-full font-semibold transition-all duration-200 flex items-center gap-2 ${
+              className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold transition-all duration-300 text-sm sm:text-base ${
                 activeFilter === filter.id
                   ? "bg-[#DC2626] text-white shadow-lg"
-                  : "bg-white text-[#666666] hover:text-[#DC2626] shadow-md border border-[#F5E6CC]"
+                  : "bg-white text-[#666666] border-2 border-[#F5E6CC] hover:border-[#DC2626]"
               }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               {filter.label}
-              <span className={`text-xs px-2 py-1 rounded-full ${
-                activeFilter === filter.id
-                  ? "bg-white text-[#DC2626]"
-                  : "bg-[#F5E6CC] text-[#666666]"
-              }`}>
+              <span className={`ml-2 font-bold ${activeFilter === filter.id ? "text-white" : "text-[#DC2626]"}`}>
                 {filter.count}
               </span>
             </motion.button>
@@ -338,37 +333,40 @@ const Projects = () => {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex gap-3 pt-4 border-t border-[#F5E6CC]">
+                  <div className="grid grid-cols-2 gap-3 pt-4 border-t border-[#F5E6CC]">
                     <motion.a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 bg-gray-100 text-gray-700 py-2 px-4 rounded-lg text-sm font-semibold hover:bg-gray-200 transition-colors duration-200 flex items-center justify-center gap-2"
+                      className="bg-gray-100 text-gray-700 py-2 px-4 rounded-lg text-xs sm:text-sm font-semibold hover:bg-gray-200 transition-colors duration-200 flex items-center justify-center gap-2"
                       whileHover="hover"
                       whileTap="tap"
                     >
                       <FaGithub size={14} />
-                      View Code
+                      <span className="hidden sm:inline">View Code</span>
+                      <span className="sm:hidden">Code</span>
                     </motion.a>
                     {project.liveUrl ? (
                       <motion.a
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 bg-[#DC2626] text-white py-2 px-4 rounded-lg text-sm font-semibold hover:bg-[#B91C1C] transition-colors duration-200 flex items-center justify-center gap-2"
+                        className="bg-[#DC2626] text-white py-2 px-4 rounded-lg text-xs sm:text-sm font-semibold hover:bg-[#B91C1C] transition-colors duration-200 flex items-center justify-center gap-2"
                         whileHover="hover"
                         whileTap="tap"
                       >
                         <FaExternalLinkAlt size={12} />
-                        Live Demo
+                        <span className="hidden sm:inline">Live Demo</span>
+                        <span className="sm:hidden">Demo</span>
                       </motion.a>
                     ) : (
                       <button
-                        className="flex-1 bg-gray-300 text-gray-500 py-2 px-4 rounded-lg text-sm font-semibold cursor-not-allowed flex items-center justify-center gap-2 transition-colors duration-200"
+                        className="bg-gray-300 text-gray-500 py-2 px-4 rounded-lg text-xs sm:text-sm font-semibold cursor-not-allowed flex items-center justify-center gap-2 transition-colors duration-200"
                         disabled
                       >
                         <FaEye size={12} />
-                        Demo Soon
+                        <span className="hidden sm:inline">Demo Soon</span>
+                        <span className="sm:hidden">Soon</span>
                       </button>
                     )}
                   </div>

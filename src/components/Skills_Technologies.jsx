@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 
 const Skills_Technologies = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeFilter, setActiveFilter] = useState("all");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -211,46 +210,32 @@ const Skills_Technologies = () => {
     return colors[category] || { bg: "bg-gray-50", border: "border-gray-200", text: "text-gray-600", icon: "text-gray-500", hover: "hover:bg-gray-100" };
   };
 
-  const filters = [
-    { id: "all", label: "All Projects", count: technologies.length },
-    { id: "frontend", label: "Frontend", count: technologies.filter(t => t.category === "frontend").length },
-    { id: "backend", label: "Backend", count: technologies.filter(t => t.category === "backend").length },
-    { id: "devops", label: "DevOps", count: technologies.filter(t => t.category === "devops").length },
-    { id: "database", label: "Tools & DB", count: technologies.filter(t => t.category === "database" || t.category === "tools").length },
-  ];
-
-  const getFilteredTechs = () => {
-    if (activeFilter === "all") return technologies;
-    if (activeFilter === "database") return technologies.filter(t => t.category === "database" || t.category === "tools");
-    return technologies.filter(t => t.category === activeFilter);
-  };
-
   return (
     <section
       id="skills"
-      className="skills-technologies py-16 sm:py-20 relative overflow-hidden bg-[#F5E6CC]"
+      className="skills-technologies py-20 relative overflow-hidden bg-[#F5E6CC]"
     >
       <div className="absolute inset-0 bg-[radial-gradient(#DC2626_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.03]"></div>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <motion.div
-          className="text-center mb-12 sm:mb-16"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-black">
+          <h2 className="text-5xl font-bold mb-4 text-black">
             Skills & <span className="text-[#DC2626]">Technologies</span>
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-[#666666] max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-[#666666] max-w-2xl mx-auto leading-relaxed">
             A comprehensive toolkit of technologies and frameworks I use to build modern, scalable applications
           </p>
         </motion.div>
 
         {/* Infinite Scroll Logos */}
         <motion.div
-          className="w-full my-12 sm:my-16 overflow-hidden hidden md:block"
+          className="w-full my-16 overflow-hidden"
           initial={{ opacity: 0 }}
           animate={isVisible ? { opacity: 1 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -260,7 +245,7 @@ const Skills_Technologies = () => {
               {duplicatedTechnologies.map((tech, index) => (
                 <motion.div
                   key={index}
-                  className="mx-4 sm:mx-8 flex flex-col items-center justify-center"
+                  className="mx-8 flex flex-col items-center justify-center"
                   whileHover={{ scale: 1.15, y: -5 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
@@ -279,35 +264,9 @@ const Skills_Technologies = () => {
           </div>
         </motion.div>
 
-        {/* Filter Buttons - Mobile & Tablet */}
+        {/* Categories Grid */}
         <motion.div
-          className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 md:hidden"
-          initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
-        >
-          {filters.map((filter) => (
-            <motion.button
-              key={filter.id}
-              onClick={() => setActiveFilter(filter.id)}
-              className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold transition-all duration-300 text-sm sm:text-base ${
-                activeFilter === filter.id
-                  ? "bg-[#DC2626] text-white shadow-lg"
-                  : "bg-white text-[#666666] border-2 border-[#F5E6CC] hover:border-[#DC2626]"
-              }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {filter.label}
-              <span className={`ml-2 font-bold ${activeFilter === filter.id ? "text-white" : "text-[#DC2626]"}`}>
-                {filter.count}
-              </span>
-            </motion.button>
-          ))}
-        </motion.div>
-
-        {/* Categories Grid - Desktop */}
-        <motion.div
-          className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
           variants={containerVariants}
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
@@ -332,15 +291,15 @@ const Skills_Technologies = () => {
                 .map((tech, index) => (
                   <motion.div
                     key={index}
-                    className="bg-[#F5E6CC] p-3 rounded-xl flex items-center transition-all duration-200 hover:bg-amber-50 hover:translate-x-1"
+                    className="bg-[#F5E6CC] p-3 rounded-xl flex items-center gap-2 transition-all duration-200 hover:bg-amber-50 hover:translate-x-1 min-w-0"
                     whileHover={{ scale: 1.03 }}
                   >
                     <img
                       src={tech.icon}
                       alt={tech.name}
-                      className="w-5 h-5 mr-3"
+                      className="w-5 h-5 flex-shrink-0"
                     />
-                    <span className="text-sm font-medium text-black">{tech.name}</span>
+                    <span className="text-sm font-medium text-black truncate">{tech.name}</span>
                   </motion.div>
                 ))}
             </div>
@@ -367,15 +326,15 @@ const Skills_Technologies = () => {
                 .map((tech, index) => (
                   <motion.div
                     key={index}
-                    className="bg-[#F5E6CC] p-3 rounded-xl flex items-center transition-all duration-200 hover:bg-amber-50 hover:translate-x-1"
+                    className="bg-[#F5E6CC] p-3 rounded-xl flex items-center gap-2 transition-all duration-200 hover:bg-amber-50 hover:translate-x-1 min-w-0"
                     whileHover={{ scale: 1.03 }}
                   >
                     <img
                       src={tech.icon}
                       alt={tech.name}
-                      className="w-5 h-5 mr-3"
+                      className="w-5 h-5 flex-shrink-0"
                     />
-                    <span className="text-sm font-medium text-black">{tech.name}</span>
+                    <span className="text-sm font-medium text-black truncate">{tech.name}</span>
                   </motion.div>
                 ))}
             </div>
@@ -402,15 +361,15 @@ const Skills_Technologies = () => {
                 .map((tech, index) => (
                   <motion.div
                     key={index}
-                    className="bg-[#F5E6CC] p-3 rounded-xl flex items-center transition-all duration-200 hover:bg-amber-50 hover:translate-x-1"
+                    className="bg-[#F5E6CC] p-3 rounded-xl flex items-center gap-2 transition-all duration-200 hover:bg-amber-50 hover:translate-x-1 min-w-0"
                     whileHover={{ scale: 1.03 }}
                   >
                     <img
                       src={tech.icon}
                       alt={tech.name}
-                      className="w-5 h-5 mr-3"
+                      className="w-5 h-5 flex-shrink-0"
                     />
-                    <span className="text-sm font-medium text-black">{tech.name}</span>
+                    <span className="text-sm font-medium text-black truncate">{tech.name}</span>
                   </motion.div>
                 ))}
             </div>
@@ -440,174 +399,19 @@ const Skills_Technologies = () => {
                 .map((tech, index) => (
                   <motion.div
                     key={index}
-                    className="bg-[#F5E6CC] p-3  rounded-xl flex items-center transition-all duration-200 hover:bg-amber-50 hover:translate-x-1"
+                    className="bg-[#F5E6CC] p-3 rounded-xl flex items-center gap-2 transition-all duration-200 hover:bg-amber-50 hover:translate-x-1 min-w-0"
                     whileHover={{ scale: 1.03 }}
                   >
                     <img
                       src={tech.icon}
                       alt={tech.name}
-                      className="w-5 h-5 mr-3"
+                      className="w-5 h-5 flex-shrink-0"
                     />
-                    <span className="text-sm font-medium text-black">{tech.name}</span>
+                    <span className="text-sm font-medium text-black truncate">{tech.name}</span>
                   </motion.div>
                 ))}
             </div>
           </motion.div>
-        </motion.div>
-
-        {/* Mobile/Tablet - Single Card with Filter */}
-        <motion.div
-          className="md:hidden"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
-        >
-          {activeFilter === "all" || activeFilter === "frontend" ? (
-            <motion.div
-              className="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-[#F5E6CC] mb-4"
-              variants={itemVariants}
-              key="frontend"
-            >
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-4">
-                  <FaCode className="text-2xl text-blue-500" />
-                </div>
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-black">Frontend</h3>
-                  <p className="text-xs sm:text-sm text-[#666666]">UI/UX Development</p>
-                </div>
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {technologies
-                  .filter((tech) => tech.category === "frontend")
-                  .map((tech, index) => (
-                    <motion.div
-                      key={index}
-                      className="bg-[#F5E6CC] p-3 rounded-xl flex items-center justify-center flex-col transition-all duration-200 hover:bg-amber-50"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      <img
-                        src={tech.icon}
-                        alt={tech.name}
-                        className="w-6 h-6 mb-2"
-                      />
-                      <span className="text-xs font-medium text-black text-center">{tech.name}</span>
-                    </motion.div>
-                  ))}
-              </div>
-            </motion.div>
-          ) : null}
-
-          {activeFilter === "all" || activeFilter === "backend" ? (
-            <motion.div
-              className="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-[#F5E6CC] mb-4"
-              variants={itemVariants}
-              key="backend"
-            >
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mr-4">
-                  <FaCloud className="text-2xl text-green-500" />
-                </div>
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-black">Backend</h3>
-                  <p className="text-xs sm:text-sm text-[#666666]">Server & APIs</p>
-                </div>
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {technologies
-                  .filter((tech) => tech.category === "backend")
-                  .map((tech, index) => (
-                    <motion.div
-                      key={index}
-                      className="bg-[#F5E6CC] p-3 rounded-xl flex items-center justify-center flex-col transition-all duration-200 hover:bg-amber-50"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      <img
-                        src={tech.icon}
-                        alt={tech.name}
-                        className="w-6 h-6 mb-2"
-                      />
-                      <span className="text-xs font-medium text-black text-center">{tech.name}</span>
-                    </motion.div>
-                  ))}
-              </div>
-            </motion.div>
-          ) : null}
-
-          {activeFilter === "all" || activeFilter === "devops" ? (
-            <motion.div
-              className="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-[#F5E6CC] mb-4"
-              variants={itemVariants}
-              key="devops"
-            >
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mr-4">
-                  <FaTools className="text-2xl text-purple-500" />
-                </div>
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-black">DevOps</h3>
-                  <p className="text-xs sm:text-sm text-[#666666]">Cloud & Infrastructure</p>
-                </div>
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {technologies
-                  .filter((tech) => tech.category === "devops")
-                  .map((tech, index) => (
-                    <motion.div
-                      key={index}
-                      className="bg-[#F5E6CC] p-3 rounded-xl flex items-center justify-center flex-col transition-all duration-200 hover:bg-amber-50"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      <img
-                        src={tech.icon}
-                        alt={tech.name}
-                        className="w-6 h-6 mb-2"
-                      />
-                      <span className="text-xs font-medium text-black text-center">{tech.name}</span>
-                    </motion.div>
-                  ))}
-              </div>
-            </motion.div>
-          ) : null}
-
-          {activeFilter === "all" || activeFilter === "database" ? (
-            <motion.div
-              className="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-[#F5E6CC]"
-              variants={itemVariants}
-              key="database"
-            >
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mr-4">
-                  <FaDatabase className="text-2xl text-amber-500" />
-                </div>
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-black">Tools & DB</h3>
-                  <p className="text-xs sm:text-sm text-[#666666]">Database & Development</p>
-                </div>
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {technologies
-                  .filter(
-                    (tech) =>
-                      tech.category === "database" || tech.category === "tools"
-                  )
-                  .map((tech, index) => (
-                    <motion.div
-                      key={index}
-                      className="bg-[#F5E6CC] p-3 rounded-xl flex items-center justify-center flex-col transition-all duration-200 hover:bg-amber-50"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      <img
-                        src={tech.icon}
-                        alt={tech.name}
-                        className="w-6 h-6 mb-2"
-                      />
-                      <span className="text-xs font-medium text-black text-center">{tech.name}</span>
-                    </motion.div>
-                  ))}
-              </div>
-            </motion.div>
-          ) : null}
         </motion.div>
       </div>
 

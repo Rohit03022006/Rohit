@@ -25,6 +25,7 @@ const Contact = () => {
   const [status, setStatus] = useState("");
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [activeTab, setActiveTab] = useState("form");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -142,7 +143,7 @@ const Contact = () => {
         </motion.h2>
 
         <motion.p
-          className="text-base sm:text-lg md:text-xl text-[#666666] text-center max-w-2xl mx-auto mb-12 sm:mb-16"
+          className="text-base sm:text-lg md:text-xl text-[#666666] text-center max-w-2xl mx-auto mb-8 sm:mb-12 md:mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -150,7 +151,40 @@ const Contact = () => {
           Let's discuss your project and bring your ideas to life!
         </motion.p>
 
-        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
+        {/* Mobile Tab Buttons */}
+        <motion.div
+          className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 md:hidden"
+          initial="hidden"
+          whileInView="visible"
+        >
+          <motion.button
+            onClick={() => setActiveTab("form")}
+            className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold transition-all duration-300 text-sm sm:text-base ${
+              activeTab === "form"
+                ? "bg-[#DC2626] text-white shadow-lg"
+                : "bg-white text-[#666666] border-2 border-[#F5E6CC] hover:border-[#DC2626]"
+            }`}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Contact Form
+          </motion.button>
+          <motion.button
+            onClick={() => setActiveTab("info")}
+            className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold transition-all duration-300 text-sm sm:text-base ${
+              activeTab === "info"
+                ? "bg-[#DC2626] text-white shadow-lg"
+                : "bg-white text-[#666666] border-2 border-[#F5E6CC] hover:border-[#DC2626]"
+            }`}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Get in Touch
+          </motion.button>
+        </motion.div>
+
+        {/* Desktop Grid View */}
+        <div className="hidden md:grid lg:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
           {/* Contact Information */}
           <motion.div
             className="space-y-8"
@@ -395,6 +429,244 @@ const Contact = () => {
             )}
           </motion.div>
         </div>
+
+        {/* Mobile View - Contact Information */}
+        {activeTab === "info" && (
+          <motion.div
+            className="space-y-6 mb-8 md:hidden max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div>
+              <h3 className="text-xl sm:text-2xl font-bold mb-6 text-black text-center">Let's Connect</h3>
+              <p className="text-base sm:text-lg text-[#666666] mb-8 text-center">
+                I'm always interested in hearing about new opportunities and 
+                collaborating on exciting projects. Feel free to reach out!
+              </p>
+            </div>
+
+            <div className="space-y-4 flex flex-col items-center">
+              <div className="w-full flex items-center space-x-4 p-4 bg-white rounded-xl shadow-lg border border-[#F5E6CC]">
+                <div className="flex-shrink-0 w-12 h-12 bg-[#FEE2E2] rounded-full flex items-center justify-center">
+                  <FaMapMarkerAlt className="text-[#DC2626] text-lg" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-black">Location</h4>
+                  <p className="text-[#666666]">India</p>
+                </div>
+              </div>
+
+              <div className="w-full flex items-center space-x-4 p-4 bg-white rounded-xl shadow-lg border border-[#F5E6CC]">
+                <div className="flex-shrink-0 w-12 h-12 bg-[#FEE2E2] rounded-full flex items-center justify-center">
+                  <FaEnvelope className="text-[#DC2626] text-lg" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-black">Email</h4>
+                  <a 
+                    href="mailto:kumarrohit67476@gmail.com" 
+                    className="text-[#666666] hover:text-[#DC2626] transition-colors text-sm"
+                  >
+                    kumarrohit67476@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="w-full flex items-center space-x-4 p-4 bg-white rounded-xl shadow-lg border border-[#F5E6CC]">
+                <div className="flex-shrink-0 w-12 h-12 bg-[#FEE2E2] rounded-full flex items-center justify-center">
+                  <FaPhone  className="text-[#DC2626] text-lg " />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-black">Availability</h4>
+                  <p className="text-[#666666]">Open for freelance work</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Social Links */}
+            <div className="pt-6 w-full flex flex-col items-center">
+              <h4 className="font-semibold text-black mb-4 text-base sm:text-lg text-center">Follow Me</h4>
+              <div className="flex justify-center gap-4">
+                {[
+                  { icon: FaGithub, href: "https://github.com/Rohit03022006", color: "bg-gray-900", label: "GitHub" },
+                  { icon: FaLinkedin, href: "https://www.linkedin.com/in/rohit-kumar-783127334", color: "bg-[#0077B5]", label: "LinkedIn" },
+                  { icon: FaInstagram, href: "https://instagram.com/_rohit_xten", color: "bg-gradient-to-r from-[#F58529] via-[#DD2A7B] to-[#8134AF]", label: "Instagram" },
+                ].map((social, index) => {
+                  const IconComponent = social.icon;
+                  return (
+                    <motion.a
+                      key={index}
+                      href={social.href}
+                      className={`relative ${social.color} text-white p-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={social.label}
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      <IconComponent className="w-5 h-5" />
+                    </motion.a>
+                  );
+                })}
+              </div>
+            </div>
+          </motion.div>
+        )}
+
+        {/* Mobile View - Contact Form */}
+        {activeTab === "form" && (
+          <motion.div
+            className="bg-white p-6 sm:p-8 rounded-2xl shadow-2xl border border-[#F5E6CC] md:hidden max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {status === "SUCCESS" ? (
+              <motion.div
+                className="text-center py-12"
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+              >
+                <FaCheckCircle className="text-green-500 text-6xl mx-auto mb-6" />
+                <h3 className="text-2xl font-semibold mb-4 text-black">
+                  Message Sent Successfully!
+                </h3>
+                <p className="text-[#666666] text-lg">
+                  Thank you for reaching out. I'll get back to you within 24 hours.
+                </p>
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit} noValidate>
+                <div className="mb-6">
+                  <label htmlFor="name" className="block text-black mb-3 font-semibold text-sm sm:text-base">
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#DC2626] transition-all ${
+                      errors.name ? "border-red-500" : "border-[#F5E6CC] hover:border-[#DC2626]"
+                    }`}
+                    placeholder="Your full name"
+                    required
+                  />
+                  {errors.name && (
+                    <p className="text-red-500 text-sm mt-2 flex items-center">
+                      <FaExclamationTriangle className="mr-1" /> {errors.name}
+                    </p>
+                  )}
+                </div>
+
+                <div className="mb-6">
+                  <label htmlFor="email" className="block text-black mb-3 font-semibold text-sm sm:text-base">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#DC2626] transition-all ${
+                      errors.email ? "border-red-500" : "border-[#F5E6CC] hover:border-[#DC2626]"
+                    }`}
+                    placeholder="your.email@example.com"
+                    required
+                  />
+                  {errors.email && (
+                    <p className="text-red-500 text-sm mt-2 flex items-center">
+                      <FaExclamationTriangle className="mr-1" /> {errors.email}
+                    </p>
+                  )}
+                </div>
+
+                <div className="mb-6">
+                  <label htmlFor="subject" className="block text-black mb-3 font-semibold text-sm sm:text-base">
+                    Subject *
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#DC2626] transition-all ${
+                      errors.subject ? "border-red-500" : "border-[#F5E6CC] hover:border-[#DC2626]"
+                    }`}
+                    placeholder="What's this about?"
+                    required
+                  />
+                  {errors.subject && (
+                    <p className="text-red-500 text-sm mt-2 flex items-center">
+                      <FaExclamationTriangle className="mr-1" /> {errors.subject}
+                    </p>
+                  )}
+                </div>
+
+                <div className="mb-8">
+                  <label htmlFor="message" className="block text-black mb-3 font-semibold text-sm sm:text-base">
+                    Message *
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows="5"
+                    className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#DC2626] transition-all resize-none ${
+                      errors.message ? "border-red-500" : "border-[#F5E6CC] hover:border-[#DC2626]"
+                    }`}
+                    placeholder="Tell me about your project..."
+                    required
+                  ></textarea>
+                  {errors.message && (
+                    <p className="text-red-500 text-sm mt-2 flex items-center">
+                      <FaExclamationTriangle className="mr-1" /> {errors.message}
+                    </p>
+                  )}
+                </div>
+
+                <motion.button
+                  type="submit"
+                  disabled={isSubmitting}
+                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                  className={`w-full bg-gradient-to-r from-[#DC2626] to-[#B91C1C] text-white py-3 sm:py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all flex items-center justify-center text-sm sm:text-base ${
+                    isSubmitting
+                      ? "opacity-75 cursor-not-allowed"
+                      : "hover:from-[#B91C1C] hover:to-[#991B1B]"
+                  }`}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <FaPaperPlane className="mr-2" /> 
+                      Send Message
+                    </>
+                  )}
+                </motion.button>
+
+                {status === "ERROR" && (
+                  <motion.p 
+                    className="text-red-500 mt-4 p-3 bg-red-50 rounded-xl flex items-center border border-red-200 text-sm"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                  >
+                    <FaExclamationTriangle className="mr-2 flex-shrink-0" /> 
+                    Oops! There was an error. Please try again or email me directly.
+                  </motion.p>
+                )}
+              </form>
+            )}
+          </motion.div>
+        )}
       </div>
     </section>
   );

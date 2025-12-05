@@ -160,12 +160,12 @@ const Hero = () => {
           </motion.p>
 
           <motion.div
-            className="flex flex-wrap gap-4 mb-8"
+            className="grid grid-cols-1 sm:flex sm:flex-wrap gap-3 sm:gap-4 mb-8"
             variants={itemVariants}
           >
             <motion.a
               href="#contact"
-              className="group relative bg-gradient-to-r from-[#DC2626] to-[#B91C1C] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3 text-sm sm:text-base"
+              className="group relative bg-gradient-to-r from-[#DC2626] to-[#B91C1C] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 text-sm sm:text-base"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -176,7 +176,7 @@ const Hero = () => {
 
             <motion.a
               href="#projects"
-              className="group bg-white border-2 border-[#DC2626] text-[#DC2626] px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold hover:bg-[#FEF2F2] shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3 text-sm sm:text-base"
+              className="group bg-white border-2 border-[#DC2626] text-[#DC2626] px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold hover:bg-[#FEF2F2] shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 text-sm sm:text-base"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -187,7 +187,7 @@ const Hero = () => {
             <motion.a
               href="/resume.pdf"
               download
-              className="group bg-gray-900 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold hover:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3 text-sm sm:text-base"
+              className="group bg-gray-900 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold hover:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 text-sm sm:text-base"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
             >
