@@ -174,18 +174,18 @@ const Projects = () => {
         <div className="absolute inset-0 bg-[radial-gradient(#DC2626_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.03]"></div>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         {/* Header Section */}
         <motion.div
-          className="text-center mb-10"
+          className="text-center mb-8 sm:mb-10"
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
         >
-          <h2 className="text-5xl font-bold mb-6 text-black">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-black">
             Featured <span className="text-[#DC2626]">Projects</span>
           </h2>
           
-          <p className="text-xl text-[#666666] max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-[#666666] max-w-3xl mx-auto leading-relaxed">
             A curated collection of my recent work showcasing innovative solutions, 
             clean code practices, and cutting-edge technologies across full-stack development.
           </p>

@@ -190,7 +190,7 @@ const App = () => {
 
       {/* Back to Top Button */}
       <motion.button
-        className="fixed bottom-8 right-8 bg-[#DC2626] text-white p-4 rounded-full shadow-xl hover:shadow-2xl hover:bg-[#B91C1C] transition-all duration-300 z-40 flex items-center justify-center group"
+        className="fixed bottom-4 sm:bottom-8 right-4 sm:right-8 bg-[#DC2626] text-white p-3 sm:p-4 rounded-full shadow-xl hover:shadow-2xl hover:bg-[#B91C1C] transition-all duration-300 z-40 flex items-center justify-center group"
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         initial={{ opacity: 0, scale: 0, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -198,7 +198,7 @@ const App = () => {
         whileTap={{ scale: 0.9 }}
         transition={{ type: "spring", stiffness: 400, damping: 17 }}
       >
-        <FaArrowUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
+        <FaArrowUp className="w-5 h-5 sm:w-6 sm:h-6 group-hover:-translate-y-1 transition-transform" />
         <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
           Back to Top
         </span>

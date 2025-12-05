@@ -45,24 +45,24 @@ const About = () => {
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#F5E6CC] via-transparent to-[#FDF5E6] opacity-60"></div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         {/* Header Section */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-5xl font-bold mb-6 text-black">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-black">
             About <span className="text-[#DC2626]">Me</span>
           </h2>
           
-          <p className="text-xl text-[#666666] max-w-3xl mx-auto leading-relaxed mb-8">
+          <p className="text-base sm:text-lg md:text-xl text-[#666666] max-w-3xl mx-auto leading-relaxed mb-8">
             A passionate and dedicated Computer Science student specializing in Full Stack Development 
             and DevOps, with a strong foundation in building scalable, efficient, and user-friendly applications.
           </p>
           
-          <div className="inline-flex items-center gap-4 bg-white px-6 py-3 rounded-full shadow-md">
+          <div className="inline-flex items-center gap-4 bg-white px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-md text-sm sm:text-base">
             <FaUser className="text-[#DC2626]" />
             <span className="text-black font-medium">Open to Internship Opportunities</span>
           </div>
@@ -77,11 +77,11 @@ const About = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="lg:col-span-2"
           >
-            <div className="bg-white p-8 rounded-2xl shadow-xl border border-[#F5E6CC] hover:shadow-2xl transition-all duration-300 h-full">
+            <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-[#F5E6CC] hover:shadow-2xl transition-all duration-300 h-full">
               <div className="flex items-start mb-6">
                 <div>
-                  <h3 className="text-2xl font-bold text-black mb-2">My Journey</h3>
-                  <p className="text-[#666666]">
+                  <h3 className="text-xl sm:text-2xl font-bold text-black mb-2">My Journey</h3>
+                  <p className="text-sm sm:text-base text-[#666666]">
                     Currently pursuing my Bachelor's degree while actively building real-world projects 
                     and contributing to open source. I believe in continuous learning and applying 
                     theoretical knowledge to practical solutions.

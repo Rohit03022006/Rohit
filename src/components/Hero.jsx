@@ -115,7 +115,7 @@ const Hero = () => {
           animate="visible"
         >
           <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-4 leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-black mb-4 leading-tight"
             variants={itemVariants}
           >
             Rohit{" "}
@@ -129,7 +129,7 @@ const Hero = () => {
           </motion.h1>
 
           <motion.h2
-            className="text-xl md:text-2xl lg:text-3xl text-[#333333] mb-6 h-12 flex items-center"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-[#333333] mb-6 h-12 flex items-center"
             variants={itemVariants}
           >
             <span className="mr-2 font-medium">I build </span>
@@ -152,7 +152,7 @@ const Hero = () => {
           </motion.h2>
 
           <motion.p
-            className="text-base md:text-lg text-[#666666] mb-8 max-w-xl leading-relaxed"
+            className="text-sm sm:text-base md:text-lg lg:text-xl text-[#666666] mb-8 max-w-xl leading-relaxed"
             variants={itemVariants}
           >
             Passionate Computer Science student specializing in Full Stack Development (MERN) 
@@ -165,7 +165,7 @@ const Hero = () => {
           >
             <motion.a
               href="#contact"
-              className="group relative bg-gradient-to-r from-[#DC2626] to-[#B91C1C] text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3"
+              className="group relative bg-gradient-to-r from-[#DC2626] to-[#B91C1C] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3 text-sm sm:text-base"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -176,7 +176,7 @@ const Hero = () => {
 
             <motion.a
               href="#projects"
-              className="group bg-white border-2 border-[#DC2626] text-[#DC2626] px-6 py-3 rounded-xl font-semibold hover:bg-[#FEF2F2] shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3"
+              className="group bg-white border-2 border-[#DC2626] text-[#DC2626] px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold hover:bg-[#FEF2F2] shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3 text-sm sm:text-base"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -187,7 +187,7 @@ const Hero = () => {
             <motion.a
               href="/resume.pdf"
               download
-              className="group bg-gray-900 text-white px-6 py-3 rounded-xl font-semibold hover:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3"
+              className="group bg-gray-900 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold hover:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3 text-sm sm:text-base"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -201,8 +201,8 @@ const Hero = () => {
             className="space-y-6"
             variants={itemVariants}
           >
-            <div className="flex items-center gap-6">
-              <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+              <div className="flex gap-3 sm:gap-4">
                 {[
                   { icon: FaGithub, href: "https://github.com/Rohit03022006", color: "bg-gray-900", label: "GitHub" },
                   { icon: FaLinkedin, href: "https://www.linkedin.com/in/rohit-kumar-783127334", color: "bg-[#0077B5]", label: "LinkedIn" },
@@ -234,10 +234,10 @@ const Hero = () => {
                 ))}
               </div>
 
-              <div className="h-8 w-px bg-[#F5E6CC]"></div>
+              <div className="hidden sm:block h-8 w-px bg-[#F5E6CC]"></div>
 
               <motion.div
-                className="flex items-center text-sm text-[#666666] bg-white px-4 py-2 rounded-lg shadow-sm"
+                className="flex items-center text-xs sm:text-sm text-[#666666] bg-white px-3 sm:px-4 py-2 rounded-lg shadow-sm"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.2 }}
@@ -252,7 +252,7 @@ const Hero = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-4 pt-4 border-t border-[#F5E6CC]">
+            <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-4 border-t border-[#F5E6CC]">
               {[
                 { label: "Projects", value: "6+" },
                 { label: "Technologies", value: "15+" },
@@ -265,8 +265,8 @@ const Hero = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.4 + index * 0.1 }}
                 >
-                  <div className="text-2xl font-bold text-[#DC2626]">{stat.value}</div>
-                  <div className="text-sm text-[#666666]">{stat.label}</div>
+                  <div className="text-lg sm:text-2xl font-bold text-[#DC2626]">{stat.value}</div>
+                  <div className="text-xs sm:text-sm text-[#666666]">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
@@ -283,7 +283,7 @@ const Hero = () => {
           >
             <div className="relative">
               <motion.div
-                className="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden shadow-2xl border-8 border-white"
+                className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden shadow-2xl border-8 border-white"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 variants={floatVariants}
@@ -299,33 +299,33 @@ const Hero = () => {
 
               {/* Floating Tags */}
               <motion.div
-                className="absolute -top-6 -right-6 bg-white p-4 rounded-2xl shadow-2xl border border-[#F5E6CC]"
+                className="absolute -top-4 sm:-top-6 -right-4 sm:-right-6 bg-white p-3 sm:p-4 rounded-2xl shadow-2xl border border-[#F5E6CC]"
                 variants={floatVariants}
                 animate="animate"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-[#FEE2E2] rounded-lg flex items-center justify-center">
-                    <FaCode className="text-[#DC2626] text-lg" />
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[#FEE2E2] rounded-lg flex items-center justify-center">
+                    <FaCode className="text-[#DC2626] text-sm sm:text-lg" />
                   </div>
                   <div>
-                    <div className="font-bold text-black">MERN Stack</div>
+                    <div className="font-bold text-black text-sm sm:text-base">MERN Stack</div>
                     <div className="text-xs text-[#666666]">Full Stack Expert</div>
                   </div>
                 </div>
               </motion.div>
 
               <motion.div
-                className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-2xl border border-[#F5E6CC]"
+                className="absolute -bottom-4 sm:-bottom-6 -left-4 sm:-left-6 bg-white p-3 sm:p-4 rounded-2xl shadow-2xl border border-[#F5E6CC]"
                 variants={floatVariants}
                 animate="animate"
                 transition={{ delay: 0.5 }}
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-[#DBEAFE] rounded-lg flex items-center justify-center">
-                    <FaServer className="text-blue-600 text-lg" />
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[#DBEAFE] rounded-lg flex items-center justify-center">
+                    <FaServer className="text-blue-600 text-sm sm:text-lg" />
                   </div>
                   <div>
-                    <div className="font-bold text-black">DevOps</div>
+                    <div className="font-bold text-black text-sm sm:text-base">DevOps</div>
                     <div className="text-xs text-[#666666]">Cloud & CI/CD</div>
                   </div>
                 </div>

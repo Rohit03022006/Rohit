@@ -125,15 +125,15 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 relative overflow-hidden">
+    <section id="contact" className="py-16 sm:py-20 relative overflow-hidden">
       <div className="absolute inset-0 -z-10 h-full w-full bg-[#F5E6CC]">
         <div className="absolute inset-0 bg-gradient-to-br from-[#F5E6CC] via-[#FDF5E6] to-[#F5E6CC] opacity-90"></div>
         <div className="absolute inset-0 bg-[radial-gradient(#DC2626_1px,transparent_1px)] [background-size:16px_16px] opacity-[0.03]"></div>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <motion.h2
-          className="text-5xl font-bold text-center mb-6 text-black"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-6 text-black"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -142,7 +142,7 @@ const Contact = () => {
         </motion.h2>
 
         <motion.p
-          className="text-xl text-[#666666] text-center max-w-2xl mx-auto mb-16"
+          className="text-base sm:text-lg md:text-xl text-[#666666] text-center max-w-2xl mx-auto mb-12 sm:mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -150,7 +150,7 @@ const Contact = () => {
           Let's discuss your project and bring your ideas to life!
         </motion.p>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
           {/* Contact Information */}
           <motion.div
             className="space-y-8"
@@ -159,8 +159,8 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
           >
             <div>
-              <h3 className="text-2xl font-bold mb-6 text-black">Let's Connect</h3>
-              <p className="text-lg text-[#666666] mb-8">
+              <h3 className="text-xl sm:text-2xl font-bold mb-6 text-black">Let's Connect</h3>
+              <p className="text-base sm:text-lg text-[#666666] mb-8">
                 I'm always interested in hearing about new opportunities and 
                 collaborating on exciting projects. Feel free to reach out!
               </p>
@@ -205,7 +205,7 @@ const Contact = () => {
 
             {/* Social Links */}
             <div className="pt-6">
-              <h4 className="font-semibold text-black mb-4">Follow Me</h4>
+              <h4 className="font-semibold text-black mb-4 text-base sm:text-lg">Follow Me</h4>
               <div className="flex gap-4">
                               {[
                                 { icon: FaGithub, href: "https://github.com/Rohit03022006", color: "bg-gray-900", label: "GitHub" },
@@ -242,7 +242,7 @@ const Contact = () => {
 
           {/* Contact Form */}
           <motion.div
-            className="bg-white p-8 rounded-2xl shadow-2xl border border-[#F5E6CC]"
+            className="bg-white p-6 sm:p-8 rounded-2xl shadow-2xl border border-[#F5E6CC]"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
@@ -265,7 +265,7 @@ const Contact = () => {
               <form onSubmit={handleSubmit} noValidate>
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div>
-                    <label htmlFor="name" className="block text-black mb-3 font-semibold">
+                    <label htmlFor="name" className="block text-black mb-3 font-semibold text-sm sm:text-base">
                       Full Name <span className="text-red-500">*</span>
                     </label>
                     <input
