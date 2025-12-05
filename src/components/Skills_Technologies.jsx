@@ -387,7 +387,7 @@ const Skills_Technologies = () => {
         </motion.div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes logoLoop {
           0% {
             transform: translateX(0);

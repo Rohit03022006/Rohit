@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from "react";
 import {
   FaGithub,
-  FaTools,
-  FaFlask,
-  FaPython,
   FaExternalLinkAlt,
+  FaCode,
+  FaServer,
+  FaMobile,
+  FaDatabase,
+  FaTools,
+  FaStar,
+  FaEye,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [activeFilter, setActiveFilter] = useState("all");
+  const [hoveredProject, setHoveredProject] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,264 +37,394 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "Flight Prediction",
-      description:
-        "JavaScript application for predicting flight patterns and analytics",
-      image:
-        "https://raw.githubusercontent.com/Rohit03022006/flight-prediction/main/Flight%20Price%20Prediction%20Web%20page.PNG",
+      title: "Flight Prediction System",
+      description: "A machine learning-powered web application that predicts flight prices and patterns using advanced data analytics and visualization.",
+      image: "https://raw.githubusercontent.com/Rohit03022006/flight-prediction/main/Flight%20Price%20Prediction%20Web%20page.PNG",
       githubUrl: "https://github.com/Rohit03022006/flight-prediction",
       liveUrl: null,
-      tags: ["JavaScript", "Data Analysis", "Machine Learning"],
-      color: "blue",
+      tags: ["JavaScript", "Machine Learning", "Data Visualization", "Python"],
+      category: "fullstack",
+      featured: true,
+      techIcons: [FaCode, FaDatabase, FaTools],
+      status: "completed"
     },
     {
       id: 2,
-      title: "PESTEND",
-      description:
-        "JavaScript application with modern web development practices",
+      title: "PESTEND - Full Stack Platform",
+      description: "A comprehensive full-stack application built with modern web development practices, featuring real-time updates and responsive design.",
       image: null,
       githubUrl: "https://github.com/Rohit03022006/PESTEND",
       liveUrl: null,
-      tags: ["JavaScript", "Web Development", "Full Stack"],
-      color: "green",
+      tags: ["React", "Node.js", "MongoDB", "Express", "REST API"],
+      category: "fullstack",
+      featured: true,
+      techIcons: [FaCode, FaServer, FaDatabase],
+      status: "completed"
     },
     {
       id: 3,
       title: "2-Tier Flask Application",
-      description:
-        "Flask MySQL two-tier web application with messaging functionality",
+      description: "A scalable two-tier web application with Flask backend and MySQL database, implementing secure messaging functionality and user management.",
       image: null,
       githubUrl: "https://github.com/Rohit03022006/2-Tier-Application",
       liveUrl: null,
-      tags: ["Flask", "MySQL", "Python"],
-      color: "purple",
+      tags: ["Flask", "MySQL", "Python", "RESTful", "Authentication"],
+      category: "devops",
+      featured: false,
+      techIcons: [FaServer, FaDatabase],
+      status: "completed"
     },
     {
       id: 4,
-      title: "MLFlow Basics",
-      description: "Machine Learning workflow management with MLFlow",
-      image: null,
-      githubUrl: "https://github.com/Rohit03022006/basic-of-mlflow",
+      title: "Recipe Manager",
+      image: "https://raw.githubusercontent.com/Rohit03022006/Recipe-Manager/main/screenshots/main.png",
+      description: "A comprehensive recipe management application with search and favorite features.",
+      githubUrl: "https://github.com/Rohit03022006/Recipe-Manager/",
       liveUrl: null,
-      tags: ["Python", "MLFlow", "Machine Learning"],
-      color: "orange",
+      tags: ["React", "Node.js", "MongoDB"],
+      category: "fullstack",
+      featured: true,
+      techIcons: [FaCode, FaDatabase, FaTools],
+      status: "completed"
     },
     {
       id: 5,
-      title: "Markdown Editor",
-      description:
-        "CSS-focused markdown editor with live preview functionality",
-      image:
-        "https://raw.githubusercontent.com/Rohit03022006/Markdown_Editor/main/Markdown_Editor_Phone.png",
-      githubUrl: "https://github.com/Rohit03022006/Markdown_Editor",
+      title: "Expense Tracker",
+      description: "A comprehensive expense tracking application with visualization and budgeting features.",
+      image: "https://raw.githubusercontent.com/Rohit03022006/expense-tracker/master/Screenshots/base.png",
+      githubUrl: "https://github.com/Rohit03022006/expense-tracker",
       liveUrl: null,
-      tags: ["CSS", "JavaScript", "Markdown"],
-      color: "pink",
+      tags: ["React", "Node.js", "MongoDB", "Chart.js"],
+      category: "fullstack",
+      featured: false,
+      techIcons: [FaCode, FaDatabase, FaTools],
+      status: "completed"
     },
     {
       id: 6,
-      title: "Analog Clock with Date",
-      description:
-        "Beautiful analog clock with date display and sticky note functionality",
-      image:
-        "https://raw.githubusercontent.com/Rohit03022006/analog-clock-with-date/main/analog-clock-with-date.PNG",
-      githubUrl: "https://github.com/Rohit03022006/analog-clock-with-date",
+      title: "Analog Clock with Sticky Notes",
+      description: "A beautiful analog clock with integrated sticky notes functionality, featuring smooth animations and local storage persistence.",
+      image: "https://github.com/Rohit03022006/Rohit/blob/main/Screenshots/base.png",
+      githubUrl: "https://github.com/Rohit03022006/Rohit",
       liveUrl: null,
-      tags: ["HTML", "CSS", "JavaScript"],
-      color: "indigo",
+      tags: ["React", "CSS3", "JavaScript", "Local Storage"],
+      category: "frontend",
+      featured: false,
+      techIcons: [FaCode, FaMobile],
+      status: "completed"
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
-
-  const getColorClasses = (color) => {
-    const colorMap = {
-      blue: { bg: "bg-blue-100", text: "text-blue-800", icon: "text-blue-500" },
-      green: {
-        bg: "bg-green-100",
-        text: "text-green-800",
-        icon: "text-green-500",
-      },
-      purple: {
-        bg: "bg-purple-100",
-        text: "text-purple-800",
-        icon: "text-purple-500",
-      },
-      orange: {
-        bg: "bg-orange-100",
-        text: "text-orange-800",
-        icon: "text-orange-500",
-      },
-      pink: { bg: "bg-pink-100", text: "text-pink-800", icon: "text-pink-500" },
-      indigo: {
-        bg: "bg-indigo-100",
-        text: "text-indigo-800",
-        icon: "text-indigo-500",
-      },
+  // Helper function to get tech icons for a project
+  const getTechIcons = (project) => {
+    // Return project's techIcons if they exist
+    if (project.techIcons) return project.techIcons;
+    
+    // Default icons based on category
+    const defaultIcons = {
+      fullstack: [FaCode, FaServer, FaDatabase],
+      frontend: [FaCode, FaMobile],
+      backend: [FaServer, FaDatabase],
+      devops: [FaServer, FaTools],
     };
-    return colorMap[color] || colorMap.blue;
+    
+    return defaultIcons[project.category] || [FaCode];
   };
 
-  const getProjectIcon = (projectId) => {
-    switch (projectId) {
-      case 2:
-        return <FaTools size={48} />;
-      case 3:
-        return <FaFlask size={48} />;
-      case 4:
-        return <FaPython size={48} />;
-      default:
-        return <FaGithub size={48} />;
-    }
+  const filters = [
+    { id: "all", label: "All Projects", count: projects.length },
+    { id: "fullstack", label: "Full Stack", count: projects.filter(p => p.category === "fullstack").length },
+    { id: "frontend", label: "Frontend", count: projects.filter(p => p.category === "frontend").length },
+    { id: "backend", label: "Backend", count: projects.filter(p => p.category === "backend").length },
+    { id: "devops", label: "DevOps", count: projects.filter(p => p.category === "devops").length },
+  ];
+
+  const filteredProjects = activeFilter === "all" 
+    ? projects 
+    : projects.filter(project => project.category === activeFilter);
+
+  const getCategoryColor = (category) => {
+    const colors = {
+      fullstack: "from-purple-500 to-pink-500",
+      frontend: "from-blue-500 to-cyan-500",
+      backend: "from-green-500 to-emerald-500",
+      devops: "from-orange-500 to-red-500",
+    };
+    return colors[category] || "from-gray-500 to-gray-700";
+  };
+
+  const getStatusBadge = (status) => {
+    const statusConfig = {
+      completed: { color: "bg-green-100 text-green-800", label: "Completed" },
+      inProgress: { color: "bg-yellow-100 text-yellow-800", label: "In Progress" },
+      planned: { color: "bg-blue-100 text-blue-800", label: "Planned" },
+    };
+    const config = statusConfig[status] || statusConfig.completed;
+    return (
+      <span className={`px-3 py-1 rounded-full text-xs font-medium ${config.color}`}>
+        {config.label}
+      </span>
+    );
   };
 
   return (
     <section id="projects" className="py-10 relative overflow-hidden">
-     <div className="absolute inset-0 -z-10 h-full w-full bg-[#F5E6CC]"></div>
+      <div className="absolute inset-0 -z-10 h-full w-full bg-[#F5E6CC]">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#F5E6CC] via-[#FDF5E6] to-[#F5E6CC] opacity-90"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(#DC2626_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.03]"></div>
+      </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <motion.h2
-          className="text-4xl font-bold text-center mb-4 text-black"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-        >
-          Featured Projects
-        </motion.h2>
-
-        <motion.p
-          className="text-lg text-gray-700 text-center max-w-2xl mx-auto mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          A collection of my recent work showcasing my skills and creativity
-        </motion.p>
-
+        {/* Header Section */}
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-          variants={containerVariants}
+          className="text-center mb-10"
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
         >
-          {projects.map((project, index) => {
-            const colorClasses = getColorClasses(project.color);
+          <h2 className="text-5xl font-bold mb-6 text-black">
+            Featured <span className="text-[#DC2626]">Projects</span>
+          </h2>
+          
+          <p className="text-xl text-[#666666] max-w-3xl mx-auto leading-relaxed">
+            A curated collection of my recent work showcasing innovative solutions, 
+            clean code practices, and cutting-edge technologies across full-stack development.
+          </p>
+        </motion.div>
 
-            return (
+        {/* Filter Buttons */}
+        <motion.div
+          className="flex flex-wrap justify-center gap-4 mb-12"
+          initial="hidden"
+          animate={isVisible ? "visible" : "hidden"}
+        >
+          {filters.map((filter) => (
+            <motion.button
+              key={filter.id}
+              animate={activeFilter === filter.id ? "active" : "visible"}
+              whileHover="hover"
+              whileTap="tap"
+              onClick={() => setActiveFilter(filter.id)}
+              className={`px-6 py-3 rounded-full font-semibold transition-all duration-200 flex items-center gap-2 ${
+                activeFilter === filter.id
+                  ? "bg-[#DC2626] text-white shadow-lg"
+                  : "bg-white text-[#666666] hover:text-[#DC2626] shadow-md border border-[#F5E6CC]"
+              }`}
+            >
+              {filter.label}
+              <span className={`text-xs px-2 py-1 rounded-full ${
+                activeFilter === filter.id
+                  ? "bg-white text-[#DC2626]"
+                  : "bg-[#F5E6CC] text-[#666666]"
+              }`}>
+                {filter.count}
+              </span>
+            </motion.button>
+          ))}
+        </motion.div>
+
+        {/* Projects Grid */}
+        <motion.div
+          className="grid md:grid-cols-2 xl:grid-cols-3 gap-8"
+          initial="hidden"
+          animate={isVisible ? "visible" : "hidden"}
+        >
+          {filteredProjects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              className="group relative"
+              whileHover="hover"
+              onMouseEnter={() => setHoveredProject(project.id)}
+              onMouseLeave={() => setHoveredProject(null)}
+            >
               <motion.div
-                key={project.id}
-                className="bg-cream rounded-xl shadow-lg overflow-hidden border border-[#F5E6CC] hover:shadow-xl transition-shadow duration-300 group"
-                variants={itemVariants}
-                whileHover={{ y: -5 }}
+                className="bg-white rounded-2xl shadow-xl border border-[#F5E6CC] overflow-hidden hover:shadow-2xl transition-all duration-300 h-full flex flex-col"
               >
-                <div
-                  className={`h-48 ${colorClasses.bg} flex items-center justify-center overflow-hidden relative`}
-                >
+                
+                {/* Project Image/Placeholder */}
+                <div className="relative h-48 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
                   {project.image ? (
-                    <img
+                    <motion.img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover"
                     />
                   ) : (
-                    <div className={colorClasses.icon}>
-                      {getProjectIcon(project.id)}
+                    <div className={`w-full h-full flex items-center justify-center bg-gradient-to-br ${getCategoryColor(project.category)}`}>
+                      <div className="text-white text-center">
+                        <FaCode className="text-4xl mb-2 mx-auto" />
+                        <span className="text-sm font-semibold">{project.title}</span>
+                      </div>
                     </div>
                   )}
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                    <div className="flex space-x-4">
-                      <a
+                  
+                  {/* Overlay with actions */}
+                  <motion.div 
+                    className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100"
+                  >
+                    <div className="flex gap-4 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                      <motion.a
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-white p-3 rounded-full shadow-lg hover:bg-red-50 transition-colors"
-                        aria-label="View code on GitHub"
+                        className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-black hover:bg-gray-100 shadow-lg"
+                        whileHover="hover"
+                        whileTap="tap"
                       >
-                        <FaGithub size={20} />
-                      </a>
+                        <FaGithub size={18} />
+                      </motion.a>
                       {project.liveUrl && (
-                        <a
+                        <motion.a
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors"
-                          aria-label="View live demo"
+                          className="w-12 h-12 bg-[#DC2626] rounded-full flex items-center justify-center text-white hover:bg-[#B91C1C] shadow-lg"
+                          whileHover="hover"
+                          whileTap="tap"
                         >
-                          <FaExternalLinkAlt size={20} />
-                        </a>
+                          <FaExternalLinkAlt size={16} />
+                        </motion.a>
                       )}
                     </div>
+                  </motion.div>
+
+                  {/* Featured Badge */}
+                  {project.featured && (
+                    <div className="absolute top-4 left-4 bg-gradient-to-r from-[#DC2626] to-[#B91C1C] text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                      <FaStar className="inline mr-1" size={10} />
+                      FEATURED
+                    </div>
+                  )}
+
+                  {/* Status Badge */}
+                  <div className="absolute top-4 right-4">
+                    {getStatusBadge(project.status)}
                   </div>
                 </div>
 
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2 text-gray-800">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-600 mb-4">{project.description}</p>
+                {/* Project Content */}
+                <div className="p-6 flex-1 flex flex-col">
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-black mb-3 group-hover:text-[#DC2626] transition-colors duration-200">
+                      {project.title}
+                    </h3>
+                    
+                    <p className="text-[#666666] mb-4 leading-relaxed line-clamp-3">
+                      {project.description}
+                    </p>
 
+                    {/* Tech Icons */}
+                    <div className="flex gap-3 mb-4">
+                      {getTechIcons(project).map((Icon, index) => (
+                        <div
+                          key={index}
+                          className="w-8 h-8 bg-[#FEE2E2] rounded-lg flex items-center justify-center text-[#DC2626] transition-transform duration-200 hover:scale-110"
+                        >
+                          <Icon size={14} />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Tags */}
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tags.map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
-                        className={`${colorClasses.bg} ${colorClasses.text} text-xs px-3 py-1 rounded-full`}
+                        className="px-3 py-1 bg-[#F5E6CC] text-[#666666] text-xs rounded-full font-medium transition-colors duration-200 hover:bg-[#DC2626] hover:text-white"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-indigo-600 font-semibold hover:underline inline-flex items-center"
-                  >
-                    View Project{" "}
-                    <FaExternalLinkAlt size={14} className="ml-1" />
-                  </a>
+                  {/* Action Buttons */}
+                  <div className="flex gap-3 pt-4 border-t border-[#F5E6CC]">
+                    <motion.a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 bg-gray-100 text-gray-700 py-2 px-4 rounded-lg text-sm font-semibold hover:bg-gray-200 transition-colors duration-200 flex items-center justify-center gap-2"
+                      whileHover="hover"
+                      whileTap="tap"
+                    >
+                      <FaGithub size={14} />
+                      View Code
+                    </motion.a>
+                    {project.liveUrl ? (
+                      <motion.a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 bg-[#DC2626] text-white py-2 px-4 rounded-lg text-sm font-semibold hover:bg-[#B91C1C] transition-colors duration-200 flex items-center justify-center gap-2"
+                        whileHover="hover"
+                        whileTap="tap"
+                      >
+                        <FaExternalLinkAlt size={12} />
+                        Live Demo
+                      </motion.a>
+                    ) : (
+                      <button
+                        className="flex-1 bg-gray-300 text-gray-500 py-2 px-4 rounded-lg text-sm font-semibold cursor-not-allowed flex items-center justify-center gap-2 transition-colors duration-200"
+                        disabled
+                      >
+                        <FaEye size={12} />
+                        Demo Soon
+                      </button>
+                    )}
+                  </div>
                 </div>
               </motion.div>
-            );
-          })}
+            </motion.div>
+          ))}
         </motion.div>
 
+        {/* Call to Action */}
         <motion.div
-          className="text-center mt-12"
+          className="text-center mt-16"
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={{ duration: 0.1, delay: 0.3 }}
         >
-          <a
+          <div className="bg-white rounded-2xl p-8 shadow-lg border border-[#F5E6CC] max-w-2xl mx-auto">
+            <h3 className="text-2xl font-bold text-black mb-4">
+              Interested in Collaborating?
+            </h3>
+            <p className="text-[#666666] mb-6">
+              Have a project in mind? Let's work together to bring your ideas to life with cutting-edge technology and innovative solutions.
+            </p>
+            <motion.a
+              href="#contact"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-[#DC2626] to-[#B91C1C] text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
+              whileHover="hover"
+              whileTap="tap"
+            >
+              <FaCode />
+              Start a Project
+            </motion.a>
+          </div>
+
+          <motion.a
             href="https://github.com/Rohit03022006"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 shadow-lg hover:shadow-xl"
+            className="inline-flex items-center gap-3 mt-8 bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-200"
+            whileHover="hover"
+            whileTap="tap"
           >
-            <FaGithub className="mr-2" /> View All Projects on GitHub
-          </a>
+            <FaGithub />
+            Explore All Projects on GitHub
+          </motion.a>
         </motion.div>
       </div>
+
+      <style jsx>{`
+        .line-clamp-3 {
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+      `}</style>
     </section>
   );
 };
