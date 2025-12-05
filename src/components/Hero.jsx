@@ -6,6 +6,9 @@ import {
   FaEnvelope,
   FaCode,
   FaServer,
+  FaArrowDown,
+  FaDownload,
+  FaExternalLinkAlt,
 } from "react-icons/fa";
 import { Typewriter } from "react-simple-typewriter";
 import { motion } from "framer-motion";
@@ -49,7 +52,7 @@ const Hero = () => {
       opacity: 1,
       transition: {
         delayChildren: 0.3,
-        staggerChildren: 0.2,
+        staggerChildren: 0.15,
       },
     },
   };
@@ -60,22 +63,12 @@ const Hero = () => {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.5,
+        duration: 0.6,
+        ease: "easeOut",
       },
     },
   };
 
-  const blobVariants = {
-    animate: {
-      scale: [1, 1.1, 1],
-      rotate: [0, 5, 0],
-      transition: {
-        duration: 10,
-        repeat: Infinity,
-        ease: "easeInOut",
-      },
-    },
-  };
 
   const imageVariants = {
     hidden: { scale: 0, opacity: 0 },
@@ -86,13 +79,14 @@ const Hero = () => {
         duration: 0.8,
         type: "spring",
         stiffness: 100,
+        damping: 10,
       },
     },
   };
 
   const floatVariants = {
     animate: {
-      y: [0, -15, 0],
+      y: [0, -20, 0],
       transition: {
         duration: 3,
         repeat: Infinity,
@@ -103,81 +97,66 @@ const Hero = () => {
 
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center overflow-hidden
-  [background-image:linear-gradient(to_bottom_right,#FFFBF0,#F5E6CC),radial-gradient(#e5e7eb_1px,transparent_1px)]
-  [background-size:auto,16px_16px]
-  [background-position:center,center]"
+    id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#F5E6CC]"
+      
     >
-      <motion.div
-        className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#FECACA] rounded-full opacity-30"
-        variants={blobVariants}
-        animate="animate"
-      ></motion.div>
-      <motion.div
-        className="absolute top-1/3 right-1/4 w-64 h-64 bg-[#FCA5A5] rounded-full opacity-30"
-        variants={blobVariants}
-        animate="animate"
-        transition={{ delay: 2 }}
-      ></motion.div>
-      <motion.div
-        className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-[#FEE2E2] rounded-full opacity-30"
-        variants={blobVariants}
-        animate="animate"
-        transition={{ delay: 4 }}
-      ></motion.div>
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0">    
+        {/* Grid Pattern Overlay */}
+        <div className="absolute inset-0 bg-[radial-gradient(#DC2626_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.03] "></div>
+      </div>
 
-      <div className="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center relative z-10">
+      <div className="container mx-auto px-4 md:px-6 py-10 md:py-24 flex flex-col lg:flex-row items-center justify-between relative z-10">
+        {/* Left Content */}
         <motion.div
-          className="md:w-1/2 mb-12 md:mb-0"
+          className="lg:w-1/2 mb-10 lg:mb-0 px-4"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          <motion.div
-            className="mb-2 text-[#DC2626] font-mono flex items-center"
-            variants={itemVariants}
-          >
-            Hello, my name is
-          </motion.div>
-
           <motion.h1
-            className="text-5xl md:text-6xl font-bold text-black mb-4"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-4 leading-tight"
             variants={itemVariants}
           >
             Rohit{" "}
             <motion.span
-              className="text-[#DC2626] inline-block"
-              animate={{ rotate: [0, 10, -10, 0] }}
-              transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-            ></motion.span>
+              className="text-[#DC2626] relative"
+              
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              Kumar
+            </motion.span>
           </motion.h1>
 
-          <motion.h3
-            className="text-2xl md:text-3xl text-[#333333] mb-6 h-12 flex items-center"
+          <motion.h2
+            className="text-xl md:text-2xl lg:text-3xl text-[#333333] mb-6 h-12 flex items-center"
             variants={itemVariants}
           >
-            <span className="mr-2">I'm a</span>
-            <Typewriter
-              words={[
-                "Full Stack Developer",
-                "DevOps Engineer",
-                "Problem Solver",
-              ]}
-              loop={true}
-              cursor
-              cursorStyle="|"
-              typeSpeed={70}
-              deleteSpeed={50}
-              delaySpeed={1000}
-            />
-          </motion.h3>
+            <span className="mr-2 font-medium">I build </span>
+            <span className="text-[#DC2626] font-semibold">
+              <Typewriter
+                words={[
+                  "Full Stack Applications",
+                  "Scalable Backend Systems",
+                  "DevOps Pipelines",
+                  "Cloud Solutions",
+                ]}
+                loop={true}
+                cursor
+                cursorStyle="|"
+                typeSpeed={70}
+                deleteSpeed={50}
+                delaySpeed={1500}
+              />
+            </span>
+          </motion.h2>
 
           <motion.p
-            className="text-lg text-[#666666] mb-8 max-w-md"
+            className="text-base md:text-lg text-[#666666] mb-8 max-w-xl leading-relaxed"
             variants={itemVariants}
           >
-            A passionate Full Stack Developer (MERN) & DevOps Engineer from
-            India, crafting digital solutions that make an impact.
+            Passionate Computer Science student specializing in Full Stack Development (MERN) 
+            and DevOps. I create efficient, scalable digital solutions that deliver exceptional user experiences.
           </motion.p>
 
           <motion.div
@@ -186,144 +165,176 @@ const Hero = () => {
           >
             <motion.a
               href="#contact"
-              className="bg-[#DC2626] text-white px-6 py-3 rounded-lg hover:bg-[#B91C1C] shadow-lg hover:shadow-xl flex items-center gap-2 group"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="group relative bg-gradient-to-r from-[#DC2626] to-[#B91C1C] text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <motion.span
-                animate={{ rotate: [0, 10, -10, 0] }}
-                transition={{ duration: 1, repeat: Infinity, repeatDelay: 5 }}
-              >
-                <FaEnvelope />
-              </motion.span>
-              <span>Contact Me</span>
+              <FaEnvelope className="group-hover:animate-bounce" />
+              <span>Get In Touch</span>
+              <FaExternalLinkAlt className="text-sm opacity-0 group-hover:opacity-100 transition-opacity" />
             </motion.a>
 
             <motion.a
               href="#projects"
-              className="border border-[#DC2626] text-[#DC2626] px-6 py-3 rounded-lg hover:bg-[#FEF2F2] flex items-center gap-2 group"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="group bg-white border-2 border-[#DC2626] text-[#DC2626] px-6 py-3 rounded-xl font-semibold hover:bg-[#FEF2F2] shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <FaCode />
+              <FaCode className="group-hover:rotate-12 transition-transform" />
               <span>View Projects</span>
+            </motion.a>
+
+            <motion.a
+              href="/resume.pdf"
+              download
+              className="group bg-gray-900 text-white px-6 py-3 rounded-xl font-semibold hover:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <FaDownload className="group-hover:animate-bounce" />
+              <span>Resume</span>
             </motion.a>
           </motion.div>
 
+          {/* Social Links & Stats */}
           <motion.div
-            className="flex items-center gap-6"
+            className="space-y-6"
             variants={itemVariants}
           >
-            <div className="flex gap-4">
-              <motion.a
-                href="https://github.com/Rohit03022006"
-                className="text-[#000000] hover:text-black transition-colors flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-md"
-                aria-label="GitHub"
-                whileHover={{ scale: 1.2, rotate: 5 }}
-                whileTap={{ scale: 0.9 }}
+            <div className="flex items-center gap-6">
+              <div className="flex gap-4">
+                {[
+                  { icon: FaGithub, href: "https://github.com/Rohit03022006", color: "bg-gray-900", label: "GitHub" },
+                  { icon: FaLinkedin, href: "https://www.linkedin.com/in/rohit-kumar-783127334", color: "bg-[#0077B5]", label: "LinkedIn" },
+                  { icon: FaInstagram, href: "https://instagram.com/_rohit_xten", color: "bg-gradient-to-r from-[#F58529] via-[#DD2A7B] to-[#8134AF]", label: "Instagram" },
+                ].map((social, index) => (
+                  <motion.a
+                    key={index}
+                    href={social.href}
+                    className={`relative ${social.color} text-white p-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    whileTap={{ scale: 0.9 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8 + index * 0.1 }}
+                  >
+                    <social.icon className="w-5 h-5" />
+                    <motion.span
+                      className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-[#666666] opacity-0 group-hover:opacity-100 whitespace-nowrap"
+                      initial={{ y: -10 }}
+                      whileHover={{ y: 0 }}
+                    
+                    >
+                      {social.label}
+                    </motion.span>
+                  </motion.a>
+                ))}
+              </div>
+
+              <div className="h-8 w-px bg-[#F5E6CC]"></div>
+
+              <motion.div
+                className="flex items-center text-sm text-[#666666] bg-white px-4 py-2 rounded-lg shadow-sm"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.2 }}
               >
-                <FaGithub className="w-5 h-5" />
-              </motion.a>
-              <motion.a
-                href="https://www.linkedin.com/in/rohit-kumar-783127334?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3By1kjWphlRfWOP8gMoEFPOg%3D%3D"
-                className="text-[#0077B5] hover:text-[#0069a1] transition-colors flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-md"
-                aria-label="LinkedIn"
-                whileHover={{ scale: 1.2, rotate: 5 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <FaLinkedin className="w-5 h-5" />
-              </motion.a>
-              <motion.a
-                href="https://instagram.com/_rohit_xten"
-                className="text-[#E1306C] hover:text-[#e22d69] transition-colors flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-md"
-                aria-label="Instagram"
-                whileHover={{ scale: 1.2, rotate: 5 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <FaInstagram className="w-5 h-5" />
-              </motion.a>
+                <span className="font-medium">Open to Opportunities</span>
+                <motion.span
+                  className="ml-3 w-2 h-2 bg-green-500 rounded-full"
+                  animate={{ scale: [1, 1.5, 1] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                />
+              </motion.div>
             </div>
 
-            <div className="h-6 w-px bg-[#F5E6CC]"></div>
-
-            <motion.div
-              className="flex items-center text-sm text-[#666666]"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.5 }}
-            >
-              <span>Available for freelance work</span>
-              <motion.span
-                className="ml-2 w-2 h-2 bg-green-500 rounded-full"
-                animate={{ scale: [1, 1.5, 1] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              />
-            </motion.div>
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-4 pt-4 border-t border-[#F5E6CC]">
+              {[
+                { label: "Projects", value: "6+" },
+                { label: "Technologies", value: "15+" },
+                { label: "Experience", value: "2 Years" },
+              ].map((stat, index) => (
+                <motion.div
+                  key={index}
+                  className="text-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.4 + index * 0.1 }}
+                >
+                  <div className="text-2xl font-bold text-[#DC2626]">{stat.value}</div>
+                  <div className="text-sm text-[#666666]">{stat.label}</div>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </motion.div>
 
+        {/* Right Content - Image */}
         {!isMobile && (
           <motion.div
-            className="md:w-1/2 flex justify-center"
+            className="lg:w-1/2 flex justify-center items-center px-4"
             initial="hidden"
             animate="visible"
             variants={imageVariants}
           >
             <div className="relative">
               <motion.div
-                className="w-72 h-72 md:w-80 md:h-80 bg-gradient-to-br from-[#FECACA] to-[#FCA5A5] rounded-full overflow-hidden shadow-2xl border-4 border-white"
-                whileHover={{ scale: 1.05 }}
+                className="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden shadow-2xl border-8 border-white"
+                whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
+                variants={floatVariants}
+                animate="animate"
               >
+                <div className="absolute inset-0 bg-gradient-to-br from-[#DC2626]/10 to-transparent z-10"></div>
                 <img
-                  src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif"
+                  src="https://upload.wikimedia.org/wikipedia/commons/a/a6/020_The_lion_king_Snyggve_in_the_Serengeti_National_Park_Photo_by_Giles_Laurent.jpg"
                   alt="Programmer GIF"
                   className="w-full h-full object-cover"
                 />
               </motion.div>
+
+              {/* Floating Tags */}
               <motion.div
-                className="absolute -top-4 -right-4 bg-white p-3 rounded-lg shadow-lg flex items-center gap-2"
+                className="absolute -top-6 -right-6 bg-white p-4 rounded-2xl shadow-2xl border border-[#F5E6CC]"
                 variants={floatVariants}
                 animate="animate"
               >
-                <FaCode className="text-[#DC2626]" />
-                <div className="text-xs font-bold text-[#DC2626]">MERN Stack</div>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-[#FEE2E2] rounded-lg flex items-center justify-center">
+                    <FaCode className="text-[#DC2626] text-lg" />
+                  </div>
+                  <div>
+                    <div className="font-bold text-black">MERN Stack</div>
+                    <div className="text-xs text-[#666666]">Full Stack Expert</div>
+                  </div>
+                </div>
               </motion.div>
 
               <motion.div
-                className="absolute -bottom-4 -left-4 bg-white p-3 rounded-lg shadow-lg flex items-center gap-2"
+                className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-2xl border border-[#F5E6CC]"
                 variants={floatVariants}
                 animate="animate"
-                transition={{ delay: 1 }}
+                transition={{ delay: 0.5 }}
               >
-                <FaServer className="text-[#DC2626]" />
-                <div className="text-xs font-bold text-[#DC2626]">DevOps</div>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-[#DBEAFE] rounded-lg flex items-center justify-center">
+                    <FaServer className="text-blue-600 text-lg" />
+                  </div>
+                  <div>
+                    <div className="font-bold text-black">DevOps</div>
+                    <div className="text-xs text-[#666666]">Cloud & CI/CD</div>
+                  </div>
+                </div>
               </motion.div>
             </div>
           </motion.div>
         )}
       </div>
 
-      {scrollIndicator && (
-        <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.8 }}
-        >
-          <motion.div
-            className="w-6 h-10 border-2 border-[#666666] rounded-full flex justify-center"
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          >
-            <motion.div
-              className="w-1 h-3 bg-[#666666] rounded-full mt-2"
-              animate={{ opacity: [1, 0, 1] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            />
-          </motion.div>
-        </motion.div>
-      )}
     </section>
   );
 };

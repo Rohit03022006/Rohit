@@ -378,31 +378,12 @@ const Projects = () => {
           ))}
         </motion.div>
 
-        {/* Call to Action */}
         <motion.div
-          className="text-center mt-16"
+          className="text-center mt-10"
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.1, delay: 0.3 }}
         >
-          <div className="bg-white rounded-2xl p-8 shadow-lg border border-[#F5E6CC] max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-black mb-4">
-              Interested in Collaborating?
-            </h3>
-            <p className="text-[#666666] mb-6">
-              Have a project in mind? Let's work together to bring your ideas to life with cutting-edge technology and innovative solutions.
-            </p>
-            <motion.a
-              href="#contact"
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-[#DC2626] to-[#B91C1C] text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
-              whileHover="hover"
-              whileTap="tap"
-            >
-              <FaCode />
-              Start a Project
-            </motion.a>
-          </div>
-
           <motion.a
             href="https://github.com/Rohit03022006"
             target="_blank"

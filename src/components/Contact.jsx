@@ -12,6 +12,9 @@ import {
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 
+// Get Web3Forms access key from environment variable
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -75,20 +78,27 @@ const Contact = () => {
     }
 
     setIsSubmitting(true);
+    setStatus("");
 
     try {
-      // For Netlify Forms - they automatically handle the form submission
-      // when deployed on Netlify
-      const response = await fetch("/", {
+      // Create FormData object
+      const formDataToSend = new FormData();
+      formDataToSend.append("access_key", WEB3FORMS_ACCESS_KEY);
+      formDataToSend.append("name", formData.name);
+      formDataToSend.append("email", formData.email);
+      formDataToSend.append("subject", formData.subject);
+      formDataToSend.append("message", formData.message);
+      formDataToSend.append("from_name", "Portfolio Contact Form");
+
+      // Submit to Web3Forms
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({
-          "form-name": "contact",
-          ...formData
-        }).toString()
+        body: formDataToSend
       });
 
-      if (response.ok) {
+      const data = await response.json();
+
+      if (response.ok && data.success) {
         setStatus("SUCCESS");
         setFormData({ name: "", email: "", subject: "", message: "" });
         
@@ -96,16 +106,16 @@ const Contact = () => {
           setStatus("");
         }, 5000);
       } else {
-        throw new Error('Form submission failed');
+        throw new Error(data.message || 'Form submission failed');
       }
     } catch (error) {
       console.error("Form submission error:", error);
+      setStatus("ERROR");
       
       // Fallback: Open default email client
       const mailtoLink = `mailto:kumarrohit67476@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
       window.open(mailtoLink, '_blank');
       
-      setStatus("FALLBACK");
       setTimeout(() => {
         setStatus("");
       }, 5000);
@@ -128,7 +138,7 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Get In Touch
+          Get In <span className="text-[#DC2626]">Touch</span>
         </motion.h2>
 
         <motion.p
@@ -196,38 +206,37 @@ const Contact = () => {
             {/* Social Links */}
             <div className="pt-6">
               <h4 className="font-semibold text-black mb-4">Follow Me</h4>
-              <div className="flex space-x-4">
-                <motion.a
-                  href="https://www.linkedin.com/in/rohit-kumar-783127334"
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  className="w-12 h-12 bg-white rounded-xl shadow-lg border border-[#F5E6CC] flex items-center justify-center text-[#0077B5] hover:bg-[#0077B5] hover:text-white transition-all"
-                  aria-label="LinkedIn"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaLinkedin size={20} />
-                </motion.a>
-                <motion.a
-                  href="https://github.com/Rohit03022006"
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  className="w-12 h-12 bg-white rounded-xl shadow-lg border border-[#F5E6CC] flex items-center justify-center text-black hover:bg-black hover:text-white transition-all"
-                  aria-label="GitHub"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaGithub size={20} />
-                </motion.a>
-                <motion.a
-                  href="https://instagram.com/_rohit_xten"
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  className="w-12 h-12 bg-white rounded-xl shadow-lg border border-[#F5E6CC] flex items-center justify-center text-[#E1306C] hover:bg-[#E1306C] hover:text-white transition-all"
-                  aria-label="Instagram"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaInstagram size={20} />
-                </motion.a>
-              </div>
+              <div className="flex gap-4">
+                              {[
+                                { icon: FaGithub, href: "https://github.com/Rohit03022006", color: "bg-gray-900", label: "GitHub" },
+                                { icon: FaLinkedin, href: "https://www.linkedin.com/in/rohit-kumar-783127334", color: "bg-[#0077B5]", label: "LinkedIn" },
+                                { icon: FaInstagram, href: "https://instagram.com/_rohit_xten", color: "bg-gradient-to-r from-[#F58529] via-[#DD2A7B] to-[#8134AF]", label: "Instagram" },
+                              ].map((social, index) => (
+                                <motion.a
+                                  key={index}
+                                  href={social.href}
+                                  className={`relative ${social.color} text-white p-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  aria-label={social.label}
+                                  whileHover={{ scale: 1.1, rotate: 5 }}
+                                  whileTap={{ scale: 0.9 }}
+                                  initial={{ opacity: 0, y: 20 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  transition={{ delay: 0.8 + index * 0.1 }}
+                                >
+                                  <social.icon className="w-5 h-5" />
+                                  <motion.span
+                                    className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-[#666666] opacity-0 group-hover:opacity-100 whitespace-nowrap"
+                                    initial={{ y: -10 }}
+                                    whileHover={{ y: 0 }}
+                                  
+                                  >
+                                    {social.label}
+                                  </motion.span>
+                                </motion.a>
+                              ))}
+                            </div>
             </div>
           </motion.div>
 
@@ -253,19 +262,11 @@ const Contact = () => {
                 </p>
               </motion.div>
             ) : (
-              <form 
-                name="contact" 
-                method="POST" 
-                data-netlify="true"
-                onSubmit={handleSubmit}
-                noValidate
-              >
-                <input type="hidden" name="form-name" value="contact" />
-                
+              <form onSubmit={handleSubmit} noValidate>
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <label htmlFor="name" className="block text-black mb-3 font-semibold">
-                      Full Name *
+                      Full Name <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -288,7 +289,7 @@ const Contact = () => {
 
                   <div>
                     <label htmlFor="email" className="block text-black mb-3 font-semibold">
-                      Email Address *
+                      Email Address <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="email"
@@ -312,7 +313,7 @@ const Contact = () => {
 
                 <div className="mb-6">
                   <label htmlFor="subject" className="block text-black mb-3 font-semibold">
-                    Subject *
+                    Subject <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
@@ -335,7 +336,7 @@ const Contact = () => {
 
                 <div className="mb-8">
                   <label htmlFor="message" className="block text-black mb-3 font-semibold">
-                    Message *
+                    Message <span className="text-red-500">*</span>
                   </label>
                   <textarea
                     id="message"
@@ -388,17 +389,6 @@ const Contact = () => {
                   >
                     <FaExclamationTriangle className="mr-3 flex-shrink-0" /> 
                     Oops! There was an error. Please try again or email me directly.
-                  </motion.p>
-                )}
-
-                {status === "FALLBACK" && (
-                  <motion.p 
-                    className="text-blue-600 mt-6 p-4 bg-blue-50 rounded-xl flex items-center border border-blue-200"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                  >
-                    <FaExclamationTriangle className="mr-3 flex-shrink-0" /> 
-                    Opening your email client... Please send the pre-filled message.
                   </motion.p>
                 )}
               </form>

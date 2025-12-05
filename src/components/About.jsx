@@ -6,6 +6,11 @@ import {
   FaAward,
   FaLightbulb,
   FaRocket,
+  FaUser,
+  FaBriefcase,
+  FaLinkedin, 
+  FaGithub,
+  FaChartLine,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 
@@ -32,212 +37,363 @@ const About = () => {
   return (
     <section
       id="about"
-      className="py-20 relative overflow-hidden"
+      className="py-20 relative overflow-hidden bg-[#F5E6CC]"
     >
-      <div className="absolute inset-0 -z-10 h-full w-full bg-[#F5E6CC] bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"></div>
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-[radial-gradient(#DC2626_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.03]"></div>
+      
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#F5E6CC] via-transparent to-[#FDF5E6] opacity-60"></div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <motion.h2
-          className="text-4xl font-bold text-center mb-4 text-black"
+        {/* Header Section */}
+        <motion.div
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
         >
-          About Me
-        </motion.h2>
+          <h2 className="text-5xl font-bold mb-6 text-black">
+            About <span className="text-[#DC2626]">Me</span>
+          </h2>
+          
+          <p className="text-xl text-[#666666] max-w-3xl mx-auto leading-relaxed mb-8">
+            A passionate and dedicated Computer Science student specializing in Full Stack Development 
+            and DevOps, with a strong foundation in building scalable, efficient, and user-friendly applications.
+          </p>
+          
+          <div className="inline-flex items-center gap-4 bg-white px-6 py-3 rounded-full shadow-md">
+            <FaUser className="text-[#DC2626]" />
+            <span className="text-black font-medium">Open to Internship Opportunities</span>
+          </div>
+        </motion.div>
 
-        <motion.p
-          className="text-lg text-[#666666] text-center max-w-2xl mx-auto mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          Passionate developer with skills in Full Stack Development and DevOps.
-        </motion.p>
-
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          {/* Education Section */}
+        {/* Main Content Grid */}
+        <div className="grid lg:grid-cols-3 gap-8 mb-12">
+          {/* Personal Intro Card */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="lg:col-span-2"
           >
-            <div className="bg-white p-6 rounded-xl shadow-lg border border-[#F5E6CC] hover:shadow-xl transition-shadow h-full">
-              <h3 className="text-xl font-semibold mb-4 text-[#DC2626] flex items-center">
-                <FaGraduationCap className="mr-3 text-[#DC2626]" /> Education
-              </h3>
-              <div className="space-y-4">
+            <div className="bg-white p-8 rounded-2xl shadow-xl border border-[#F5E6CC] hover:shadow-2xl transition-all duration-300 h-full">
+              <div className="flex items-start mb-6">
                 <div>
-                  <h4 className="font-medium text-black">
-                    Bachelor of Technology in Computer Science and Applied Mathematics
-                  </h4>
-                  <p className="text-[#666666]">Vivekananda Institute of Professional Studies - Technical Campus, India</p>
-                  <p className="text-sm text-[#666666]">2024 - 2028</p>
+                  <h3 className="text-2xl font-bold text-black mb-2">My Journey</h3>
+                  <p className="text-[#666666]">
+                    Currently pursuing my Bachelor's degree while actively building real-world projects 
+                    and contributing to open source. I believe in continuous learning and applying 
+                    theoretical knowledge to practical solutions.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-6 mt-8">
+                <div className="bg-[#FEF3C7] p-4 rounded-xl">
+                  <div className="flex items-center mb-2">
+                    <div className="w-10 h-10 bg-[#DC2626] rounded-lg flex items-center justify-center mr-3">
+                      <FaBriefcase className="text-white text-lg" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-black">Focus Areas</h4>
+                      <p className="text-sm text-[#666666]">Full Stack & DevOps</p>
+                    </div>
+                  </div>
+                  <p className="text-sm text-[#666666] mt-2">
+                    Specializing in MERN stack development, cloud infrastructure, and CI/CD pipelines.
+                  </p>
+                </div>
+                
+                <div className="bg-[#DCFCE7] p-4 rounded-xl">
+                  <div className="flex items-center mb-2">
+                    <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center mr-3">
+                      <FaChartLine className="text-white text-lg" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-black">Approach</h4>
+                      <p className="text-sm text-[#666666]">Problem Solving First</p>
+                    </div>
+                  </div>
+                  <p className="text-sm text-[#666666] mt-2">
+                    Focus on building efficient, scalable solutions that solve real-world problems.
+                  </p>
+                </div>
+              </div>
+
+              {/* Social Links Section - Moved outside the grid */}
+              <div className="mt-8 pt-6 border-t border-[#F5E6CC]">
+                <h4 className="text-xl font-bold text-black mb-6">Connect With Me</h4>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="flex items-center gap-3">
+                    <div className="bg-[#0A66C2] w-10 h-10 rounded-lg flex items-center justify-center">
+                      <FaLinkedin className="text-[#fdfeff] text-3xl" />
+                    </div>
+                    <div>
+                      <a 
+                        href="https://www.linkedin.com/in/rohit-xten/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-black hover:text-[#DC2626] transition-colors font-semibold"
+                      >
+                        LinkedIn
+                      </a>
+                      <p className="text-xs text-[#666666]">Professional Network</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <div className="bg-black w-10 h-10 rounded-lg flex items-center justify-center">
+                      <FaGithub className="text-white text-3xl" />
+                    </div>
+                    <div>
+                      <a 
+                        href="https://github.com/rohit-xten"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-black hover:text-[#DC2626] transition-colors font-semibold"
+                      >
+                        GitHub
+                      </a>
+                      <p className="text-xs text-[#666666]">Projects & Code</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-[#FFA116] rounded-lg flex items-center justify-center">
+                      <FaCode className="text-black text-3xl" />
+                    </div>
+                    <div>
+                      <a 
+                        href="https://leetcode.com/u/rohit_xten/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-black hover:text-[#DC2626] transition-colors font-semibold"
+                      >
+                        LeetCode
+                      </a>
+                      <p className="text-xs text-[#666666]">Problem Solving</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-[#16A34A] rounded-lg flex items-center justify-center">
+                      <FaEnvelope className="text-white text-3xl" />
+                    </div>
+                    <div>
+                      <a 
+                        href="mailto:rohit@example.com"
+                        className="text-black hover:text-[#DC2626] transition-colors font-semibold"
+                      >
+                        Email Me
+                      </a>
+                      <p className="text-xs text-[#666666]">Get in touch</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </motion.div>
-
-          {/* Ask Me About Section */}
+         
+          {/* Education Card */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="bg-white p-6 rounded-xl shadow-lg border border-[#F5E6CC] hover:shadow-xl transition-shadow h-full">
-              <h3 className="text-xl font-semibold mb-4 text-[#DC2626] flex items-center">
-                <FaEnvelope className="mr-3 text-[#DC2626]" /> Ask Me About
-              </h3>
-              <ul className="space-y-3">
-                <li className="flex items-start">
-                  <span className="bg-[#FEE2E2] text-[#DC2626] p-1 rounded mr-3 mt-1 flex-shrink-0">
-                    <FaLightbulb className="text-xs" />
-                  </span>
-                  <span className="text-[#333333]">MERN Stack Development</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="bg-[#FEE2E2] text-[#DC2626] p-1 rounded mr-3 mt-1 flex-shrink-0">
-                    <FaLightbulb className="text-xs" />
-                  </span>
-                  <span className="text-[#333333]">DevOps Practices</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="bg-[#FEE2E2] text-[#DC2626] p-1 rounded mr-3 mt-1 flex-shrink-0">
-                    <FaLightbulb className="text-xs" />
-                  </span>
-                  <span className="text-[#333333]">Backend Architecture</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="bg-[#FEE2E2] text-[#DC2626] p-1 rounded mr-3 mt-1 flex-shrink-0">
-                    <FaLightbulb className="text-xs" />
-                  </span>
-                  <span className="text-[#333333]">
-                    API Design & Development
-                  </span>
-                </li>
-              </ul>
+            <div className="bg-white p-8 rounded-2xl shadow-xl border border-[#F5E6CC] hover:shadow-2xl transition-all duration-300 h-full">
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 bg-[#DBEAFE] rounded-xl flex items-center justify-center mr-4">
+                  <FaGraduationCap className="text-2xl text-blue-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-black">Education</h3>
+              </div>
+              
+              <div className="space-y-6">
+                <div className="pb-6 border-b border-[#F5E6CC]">
+                  <h4 className="font-bold text-lg text-black mb-1">
+                    B.Tech in Computer Science & Applied Mathematics
+                  </h4>
+                  <a 
+                    href="https://www.vips.edu/" 
+                    className="text-[#333333] hover:text-[#DC2626] hover:underline transition-colors font-medium mb-2 block"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Vivekananda Institute of Professional Studies
+                  </a>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-medium text-[#DC2626] bg-[#FEE2E2] px-3 py-1 rounded-full">
+                      2024 - 2028
+                    </span>
+                    <span className="text-sm text-[#666666]">New Delhi, India</span>
+                  </div>
+                </div>
+                
+                <div>
+                  <h5 className="font-bold text-black mb-3">Key Coursework:</h5>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded-full">Data Structures</span>
+                    <span className="px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded-full">Algorithms</span>
+                    <span className="px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded-full">Database Systems</span>
+                    <span className="px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded-full">Web Development</span>
+                    <span className="px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded-full">Cloud Computing</span>
+                    <span className="px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded-full">Operating Systems</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Currently Learning Section */}
+        {/* Bottom Grid */}
+        <div className="grid md:grid-cols-3 gap-8">
+          {/* Ask Me About */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <div className="bg-white p-6 rounded-2xl shadow-xl border border-[#F5E6CC] hover:shadow-2xl transition-all duration-300 h-full">
+              <div className="flex items-center mb-6">
+                <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center mr-3">
+                  <FaEnvelope className="text-lg text-green-600" />
+                </div>
+                <h3 className="text-xl font-bold text-black">Ask Me About</h3>
+              </div>
+              
+              <ul className="space-y-4">
+                {[
+                  "MERN Stack Development",
+                  "DevOps & CI/CD Pipelines",
+                  "Backend Architecture",
+                  "API Design & Development",
+                  "Cloud Infrastructure (AWS)",
+                  "Database Design & Optimization"
+                ].map((item, index) => (
+                  <li key={index} className="flex items-start">
+                    <span className="bg-[#F0FDF4] text-green-600 p-1.5 rounded-lg mr-3 mt-0.5 flex-shrink-0">
+                      <FaLightbulb className="text-sm" />
+                    </span>
+                    <span className="text-[#333333]">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+
+          {/* Currently Learning */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <div className="bg-white p-6 rounded-xl shadow-lg border border-[#F5E6CC] hover:shadow-xl transition-shadow h-full">
-              <h3 className="text-xl font-semibold mb-4 text-[#DC2626] flex items-center">
-                <FaCode className="mr-3 text-[#DC2626]" /> Currently Learning
-              </h3>
-              <ul className="space-y-3">
-                <li className="flex items-start">
-                  <span className="bg-[#FEE2E2] text-[#DC2626] p-1 rounded mr-3 mt-1 flex-shrink-0">
-                    <FaRocket className="text-xs" />
-                  </span>
-                  <span className="text-[#333333]">
-                    DevOps (Advanced Kubernetes, Terraform)
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <span className="bg-[#FEE2E2] text-[#DC2626] p-1 rounded mr-3 mt-1 flex-shrink-0">
-                    <FaRocket className="text-xs" />
-                  </span>
-                  <span className="text-[#333333]">
-                    Cloud Native Technologies
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <span className="bg-[#FEE2E2] text-[#DC2626] p-1 rounded mr-3 mt-1 flex-shrink-0">
-                    <FaRocket className="text-xs" />
-                  </span>
-                  <span className="text-[#333333]">System Design</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="bg-[#FEE2E2] text-[#DC2626] p-1 rounded mr-3 mt-1 flex-shrink-0">
-                    <FaRocket className="text-xs" />
-                  </span>
-                  <span className="text-[#333333]">Advance Backend</span>
-                </li>
+            <div className="bg-white p-6 rounded-2xl shadow-xl border border-[#F5E6CC] hover:shadow-2xl transition-all duration-300 h-full">
+              <div className="flex items-center mb-6">
+                <div className="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center mr-3">
+                  <FaCode className="text-lg text-purple-600" />
+                </div>
+                <h3 className="text-xl font-bold text-black">Currently Learning</h3>
+              </div>
+              
+              <ul className="space-y-4">
+                {[
+                  "Advanced Kubernetes & Docker",
+                  "Terraform for Infrastructure as Code",
+                  "Cloud Native Technologies",
+                  "System Design Patterns",
+                  "Advanced Backend Development",
+                  "Microservices Architecture"
+                ].map((item, index) => (
+                  <li key={index} className="flex items-start">
+                    <span className="bg-[#F3E8FF] text-purple-600 p-1.5 rounded-lg mr-3 mt-0.5 flex-shrink-0">
+                      <FaRocket className="text-sm" />
+                    </span>
+                    <span className="text-[#333333]">{item}</span>
+                  </li>
+                ))}
               </ul>
             </div>
           </motion.div>
 
-          {/* Certifications Section */}
+          {/* Certifications */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            <div className="bg-white p-6 rounded-xl shadow-lg border border-[#F5E6CC] hover:shadow-xl transition-shadow h-full">
-              <h3 className="text-xl font-semibold mb-4 text-[#DC2626] flex items-center">
-                <FaAward className="mr-3 text-[#DC2626]" /> Certifications
-              </h3>
-              <ul className="space-y-3">
-                <li className="flex items-start">
-                  <span className="bg-[#FEE2E2] text-[#DC2626] p-1 rounded mr-3 mt-1 flex-shrink-0">
-                    <FaAward className="text-xs" />
-                  </span>
-                  <span className="text-[#333333]">
-                    AWS Certified Cloud Practitioner (on going)
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <span className="bg-[#FEE2E2] text-[#DC2626] p-1 rounded mr-3 mt-1 flex-shrink-0">
-                    <FaAward className="text-xs" />
-                  </span>
-                  <span className="text-[#333333]">
-                    Docker Certified Associate (on going)
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <span className="bg-[#FEE2E2] text-[#DC2626] p-1 rounded mr-3 mt-1 flex-shrink-0">
-                    <FaAward className="text-xs" />
-                  </span>
-                  <a 
-                    href="https://www.geeksforgeeks.org/certificate/3d909843f784c042ea25c26e785e2800?utm_source=socials&utm_medium=cc_link" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-[#333333] hover:text-[#DC2626] hover:underline transition-colors"
-                  >
-                    MongoDB Developer's Toolkit - GeeksforGeeks
-                  </a>
-                </li>
-                <li className="flex items-start">
-                  <span className="bg-[#FEE2E2] text-[#DC2626] p-1 rounded mr-3 mt-1 flex-shrink-0">
-                    <FaAward className="text-xs" />
-                  </span>
-                  <a 
-                    href="https://www.freecodecamp.org/certification/rohit_xten/responsive-web-design" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-[#333333] hover:text-[#DC2626] hover:underline transition-colors"
-                  >
-                    Responsive Web Design - freecodecamp
-                  </a>
-                </li>
-                <li className="flex items-start">
-                  <span className="bg-[#FEE2E2] text-[#DC2626] p-1 rounded mr-3 mt-1 flex-shrink-0">
-                    <FaAward className="text-xs" />
-                  </span>
-                  <a 
-                    href="https://www.freecodecamp.org/certification/rohit_xten/javascript-algorithms-and-data-structures-v8" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-[#333333] hover:text-[#DC2626] hover:underline transition-colors"
-                  >
-                    JavaScript Algorithms and Data Structures - freecodecamp
-                  </a>
-                </li>
-                <li className="flex items-start">
-                  <span className="bg-[#FEE2E2] text-[#DC2626] p-1 rounded mr-3 mt-1 flex-shrink-0">
-                    <FaAward className="text-xs" />
-                  </span>
-                  <span className="text-[#333333]">
-                    DevOps (Complete) - GeeksforGeeks (on going)
-                  </span>
-                </li>
+            <div className="bg-white p-6 rounded-2xl shadow-xl border border-[#F5E6CC] hover:shadow-2xl transition-all duration-300 h-full">
+              <div className="flex items-center mb-6">
+                <div className="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center mr-3">
+                  <FaAward className="text-lg text-amber-600" />
+                </div>
+                <h3 className="text-xl font-bold text-black">Certifications</h3>
+              </div>
+              
+              <ul className="space-y-4 max-h-96 overflow-y-auto pr-2">
+                {[
+                  {
+                    name: "AWS Certified Cloud Practitioner",
+                    status: "ongoing",
+                    link: null
+                  },
+                  {
+                    name: "Docker Certified Associate",
+                    status: "ongoing", 
+                    link: null
+                  },
+                  {
+                    name: "MongoDB Developer's Toolkit",
+                    provider: "GeeksforGeeks",
+                    link: "https://www.geeksforgeeks.org/certificate/3d909843f784c042ea25c26e785e2800"
+                  },
+                  {
+                    name: "Responsive Web Design",
+                    provider: "freeCodeCamp",
+                    link: "https://www.freecodecamp.org/certification/rohit_xten/responsive-web-design"
+                  },
+                  {
+                    name: "JavaScript Algorithms & Data Structures",
+                    provider: "freeCodeCamp", 
+                    link: "https://www.freecodecamp.org/certification/rohit_xten/javascript-algorithms-and-data-structures-v8"
+                  },
+                  {
+                    name: "Complete DevOps Course",
+                    provider: "GeeksforGeeks",
+                    status: "ongoing",
+                    link: null
+                  }
+                ].map((cert, index) => (
+                  <li key={index} className="flex items-start pb-3 border-b border-[#F5E6CC] last:border-0">
+                    <span className="bg-[#FEF3C7] text-amber-600 p-1.5 rounded-lg mr-3 mt-0.5 flex-shrink-0">
+                      <FaAward className="text-sm" />
+                    </span>
+                    <div className="flex-1">
+                      <div className="flex justify-between items-start">
+                        {cert.link ? (
+                          <a 
+                            href={cert.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#333333] hover:text-[#DC2626] hover:underline transition-colors font-medium"
+                          >
+                            {cert.name}
+                          </a>
+                        ) : (
+                          <span className="text-[#333333] font-medium">{cert.name}</span>
+                        )}
+                        {cert.status === "ongoing" && (
+                          <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full ml-2">
+                            In Progress
+                          </span>
+                        )}
+                      </div>
+                      {cert.provider && (
+                        <p className="text-sm text-[#666666] mt-1">{cert.provider}</p>
+                      )}
+                    </div>
+                  </li>
+                ))}
               </ul>
             </div>
           </motion.div>

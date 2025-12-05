@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  FaGithub, FaLinkedin, FaInstagram, FaEnvelope, FaCode, FaTools,  
-  FaPython, FaFlask, FaSpinner, FaRocket, FaStar
-} from 'react-icons/fa';
-import { motion, AnimatePresence } from 'framer-motion';
-import Skills_Technologies from './components/Skills_Technologies';
+import { FaRocket, FaArrowUp } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
+import Skills_Technologies from './components/Skills_Technologies';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -16,11 +13,12 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [activeSection, setActiveSection] = useState('home');
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -29,6 +27,11 @@ const App = () => {
     const handleScroll = () => {
       const sections = ['home', 'about', 'skills', 'projects', 'contact'];
       const scrollPosition = window.scrollY + 100;
+
+      // Calculate scroll progress
+      const totalHeight = document.body.scrollHeight - window.innerHeight;
+      const currentProgress = (window.scrollY / totalHeight) * 100;
+      setScrollProgress(currentProgress);
 
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -44,13 +47,15 @@ const App = () => {
       }
     };
 
-    // Track mouse movement for cursor effects
     const handleMouseMove = (e) => {
       setCursorPosition({ x: e.clientX, y: e.clientY });
     };
 
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('mousemove', handleMouseMove);
+    
+    // Initial call
+    handleScroll();
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -67,19 +72,6 @@ const App = () => {
         behavior: 'smooth'
       });
     }
-  };
-
-  const pageVariants = {
-    initial: { opacity: 0, scale: 0.95 },
-    in: { opacity: 1, scale: 1 },
-    out: { opacity: 0, scale: 1.05 }
-  };
-
-  const pageTransition = {
-    type: "spring",
-    stiffness: 100,
-    damping: 20,
-    duration: 0.5
   };
 
   if (isLoading) {
@@ -158,65 +150,61 @@ const App = () => {
   }
 
   return (
-    <div className="min-h-screen relative overflow-x-hidden">
+    <div className="min-h-screen relative overflow-x-hidden bg-[#F5E6CC]">
+      {/* Scroll Progress Bar */}
       <motion.div 
-        className="fixed top-0 left-0 h-1 bg-red-600 z-50"
-        initial={{ width: 0 }}
-        animate={{ width: `${(window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100}%` }}
+        className="fixed top-0 left-0 h-1 bg-[#DC2626] z-50"
+        style={{ width: `${scrollProgress}%` }}
         transition={{ duration: 0.1 }}
       />
       
-      <Navigation activeSection={activeSection} scrollToSection={scrollToSection} />
+ 
       
-      <AnimatePresence mode="wait">
-        <motion.div
-        >
-          <motion.section
-          >
-            <Hero />
-          </motion.section>
+      <Navigation />
+      
+      <main>
+        <section id="home">
+          <Hero />
+        </section>
 
-          <motion.section
-          >
-            <About />
-          </motion.section>
+        <section id="about">
+          <About />
+        </section>
 
-          <motion.section
-          >
-            <Skills_Technologies />
-          </motion.section>
+        <section id="skills">
+          <Skills_Technologies />
+        </section>
 
-          <motion.section
-          >
-            <Projects />
-          </motion.section>
+        <section id="projects">
+          <Projects />
+        </section>
 
-          <motion.section
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            <Contact />
-          </motion.section>
+        <section id="contact">
+          <Contact />
+        </section>
+      </main>
 
-          <motion.footer
-          >
-            <Footer />
-          </motion.footer>
-        </motion.div>
-      </AnimatePresence>
+      <footer>
+        <Footer />
+      </footer>
 
+      {/* Back to Top Button */}
       <motion.button
-        className="fixed bottom-6 right-6 bg-red-600 text-white p-4 rounded-full shadow-lg hover:bg-red-700 transition-colors z-40 flex items-center justify-center"
+        className="fixed bottom-8 right-8 bg-[#DC2626] text-white p-4 rounded-full shadow-xl hover:shadow-2xl hover:bg-[#B91C1C] transition-all duration-300 z-40 flex items-center justify-center group"
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        initial={{ opacity: 0, scale: 0, rotate: 180 }}
-        animate={{ opacity: 1, scale: 1, rotate: 0 }}
+        initial={{ opacity: 0, scale: 0, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
         whileHover={{ scale: 1.1, rotate: 5 }}
         whileTap={{ scale: 0.9 }}
         transition={{ type: "spring", stiffness: 400, damping: 17 }}
       >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-        </svg>
+        <FaArrowUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
+        <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+          Back to Top
+        </span>
       </motion.button>
+
+     
     </div>
   );
 };

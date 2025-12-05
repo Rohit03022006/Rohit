@@ -199,68 +199,72 @@ const Skills_Technologies = () => {
     },
   };
 
-  const logoVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-      },
-    },
+  const getCategoryColor = (category) => {
+    const colors = {
+      frontend: { bg: "bg-blue-50", border: "border-blue-200", text: "text-blue-600", icon: "text-blue-500", hover: "hover:bg-blue-100" },
+      backend: { bg: "bg-green-50", border: "border-green-200", text: "text-green-600", icon: "text-green-500", hover: "hover:bg-green-100" },
+      devops: { bg: "bg-purple-50", border: "border-purple-200", text: "text-purple-600", icon: "text-purple-500", hover: "hover:bg-purple-100" },
+      database: { bg: "bg-amber-50", border: "border-amber-200", text: "text-amber-600", icon: "text-amber-500", hover: "hover:bg-amber-100" },
+      tools: { bg: "bg-amber-50", border: "border-amber-200", text: "text-amber-600", icon: "text-amber-500", hover: "hover:bg-amber-100" },
+    };
+    return colors[category] || { bg: "bg-gray-50", border: "border-gray-200", text: "text-gray-600", icon: "text-gray-500", hover: "hover:bg-gray-100" };
   };
 
   return (
     <section
       id="skills"
-      className="skills-technologies py-10 bg-gradient-to-b from-cream to-cream-light relative overflow-hidden"
+      className="skills-technologies py-20 relative overflow-hidden bg-[#F5E6CC]"
     >
-      <div className="absolute inset-0 -z-10 h-full w-full bg-[#F5E6CC]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(#DC2626_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.03]"></div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <motion.h2
-          className="text-4xl font-bold text-center mb-1 text-black"
+        {/* Header */}
+        <motion.div
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
         >
-          Skills & Technologies
-        </motion.h2>
+          <h2 className="text-5xl font-bold mb-4 text-black">
+            Skills & <span className="text-[#DC2626]">Technologies</span>
+          </h2>
+          <p className="text-xl text-[#666666] max-w-2xl mx-auto leading-relaxed">
+            A comprehensive toolkit of technologies and frameworks I use to build modern, scalable applications
+          </p>
+        </motion.div>
 
-        <motion.p
-          className="text-lg text-gray-700 text-center max-w-2xl mx-auto mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          Technologies and tools I use to bring ideas to life
-        </motion.p>
-
+        {/* Infinite Scroll Logos */}
         <motion.div
-          className="w-full my-12 overflow-hidden"
+          className="w-full my-16 overflow-hidden"
           initial={{ opacity: 0 }}
           animate={isVisible ? { opacity: 1 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <div className="flex animate-logoLoop w-max">
-            {duplicatedTechnologies.map((tech, index) => (
-              <motion.div
-                key={index}
-                className="mx-6 flex items-center justify-center"
-                whileHover={{ scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 400 }}
-              >
-                <img
-                  src={tech.icon}
-                  alt={tech.name}
-                  className="w-16 h-16 object-contain filter transition-all duration-300 ease-in-out"
-                  title={tech.name}
-                />
-              </motion.div>
-            ))}
+          <div className="relative">
+            <div className="flex animate-logoLoop w-max">
+              {duplicatedTechnologies.map((tech, index) => (
+                <motion.div
+                  key={index}
+                  className="mx-8 flex flex-col items-center justify-center"
+                  whileHover={{ scale: 1.15, y: -5 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  <div className="w-20 h-20 bg-[#fdfdfd75] rounded-2xl shadow-lg flex items-center justify-center p-4 mb-2 border border-[#F5E6CC] hover:shadow-xl transition-all duration-300">
+                    <img
+                      src={tech.icon}
+                      alt={tech.name}
+                      className="w-full h-full object-contain"
+                      title={tech.name}
+                    />
+                  </div>
+                  <span className="text-sm font-medium text-[#666666] mt-2">{tech.name}</span>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </motion.div>
 
+        {/* Categories Grid */}
         <motion.div
           className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
           variants={containerVariants}
@@ -269,27 +273,33 @@ const Skills_Technologies = () => {
         >
           {/* Frontend */}
           <motion.div
-            className="bg-cream p-6 rounded-xl shadow-lg border border-[#F5E6CC] hover:shadow-xl transition-shadow"
+            className="bg-white p-8 rounded-2xl shadow-xl border border-[#F5E6CC] hover:shadow-2xl transition-all duration-300"
             variants={itemVariants}
           >
-            <h3 className="text-xl font-semibold mb-4 text-red-600 flex items-center">
-              <FaCode className="mr-2 text-red-500" /> Frontend
-            </h3>
+            <div className="flex items-center mb-6">
+              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-4">
+                <FaCode className="text-2xl text-blue-500" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-black">Frontend</h3>
+                <p className="text-sm text-[#666666]">UI/UX Development</p>
+              </div>
+            </div>
             <div className="grid grid-cols-2 gap-3">
               {technologies
                 .filter((tech) => tech.category === "frontend")
                 .map((tech, index) => (
                   <motion.div
                     key={index}
-                    className="bg-white p-3 rounded-lg shadow-sm flex items-center transition-all duration-300 ease-in-out hover:bg-red-50 hover:-translate-y-1 hover:shadow-md"
-                    whileHover={{ scale: 1.05 }}
+                    className="bg-[#F5E6CC] p-3 rounded-xl flex items-center transition-all duration-200 hover:bg-amber-50 hover:translate-x-1"
+                    whileHover={{ scale: 1.03 }}
                   >
                     <img
                       src={tech.icon}
                       alt={tech.name}
-                      className="w-6 h-6 mr-2"
+                      className="w-5 h-5 mr-3"
                     />
-                    <span className="text-sm text-black">{tech.name}</span>
+                    <span className="text-sm font-medium text-black">{tech.name}</span>
                   </motion.div>
                 ))}
             </div>
@@ -297,28 +307,34 @@ const Skills_Technologies = () => {
 
           {/* Backend */}
           <motion.div
-            className="bg-cream p-6 rounded-xl shadow-lg border border-[#F5E6CC] hover:shadow-xl transition-shadow"
+            className="bg-white p-8 rounded-2xl shadow-xl border border-[#F5E6CC] hover:shadow-2xl transition-all duration-300"
             variants={itemVariants}
             transition={{ delay: 0.1 }}
           >
-            <h3 className="text-xl font-semibold mb-4 text-red-600 flex items-center">
-              <FaCloud className="mr-2 text-red-500" /> Backend
-            </h3>
+            <div className="flex items-center mb-6">
+              <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mr-4">
+                <FaCloud className="text-2xl text-green-500" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-black">Backend</h3>
+                <p className="text-sm text-[#666666]">Server & APIs</p>
+              </div>
+            </div>
             <div className="grid grid-cols-2 gap-3">
               {technologies
                 .filter((tech) => tech.category === "backend")
                 .map((tech, index) => (
                   <motion.div
                     key={index}
-                    className="bg-white p-3 rounded-lg shadow-sm flex items-center transition-all duration-300 ease-in-out hover:bg-red-50 hover:-translate-y-1 hover:shadow-md"
-                    whileHover={{ scale: 1.05 }}
+                    className="bg-[#F5E6CC] p-3 rounded-xl flex items-center transition-all duration-200 hover:bg-amber-50 hover:translate-x-1"
+                    whileHover={{ scale: 1.03 }}
                   >
                     <img
                       src={tech.icon}
                       alt={tech.name}
-                      className="w-6 h-6 mr-2"
+                      className="w-5 h-5 mr-3"
                     />
-                    <span className="text-sm text-black">{tech.name}</span>
+                    <span className="text-sm font-medium text-black">{tech.name}</span>
                   </motion.div>
                 ))}
             </div>
@@ -326,28 +342,34 @@ const Skills_Technologies = () => {
 
           {/* DevOps & Cloud */}
           <motion.div
-            className="bg-cream p-6 rounded-xl shadow-lg border border-[#F5E6CC] hover:shadow-xl transition-shadow"
+            className="bg-white p-8 rounded-2xl shadow-xl border border-[#F5E6CC] hover:shadow-2xl transition-all duration-300"
             variants={itemVariants}
             transition={{ delay: 0.2 }}
           >
-            <h3 className="text-xl font-semibold mb-4 text-red-600 flex items-center">
-              <FaTools className="mr-2 text-red-500" /> DevOps & Cloud
-            </h3>
+            <div className="flex items-center mb-6">
+              <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mr-4">
+                <FaTools className="text-2xl text-purple-500" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-black">DevOps</h3>
+                <p className="text-sm text-[#666666]">Cloud & Infrastructure</p>
+              </div>
+            </div>
             <div className="grid grid-cols-2 gap-3">
               {technologies
                 .filter((tech) => tech.category === "devops")
                 .map((tech, index) => (
                   <motion.div
                     key={index}
-                    className="bg-white p-3 rounded-lg shadow-sm flex items-center transition-all duration-300 ease-in-out hover:bg-red-50 hover:-translate-y-1 hover:shadow-md"
-                    whileHover={{ scale: 1.05 }}
+                    className="bg-[#F5E6CC] p-3 rounded-xl flex items-center transition-all duration-200 hover:bg-amber-50 hover:translate-x-1"
+                    whileHover={{ scale: 1.03 }}
                   >
                     <img
                       src={tech.icon}
                       alt={tech.name}
-                      className="w-6 h-6 mr-2"
+                      className="w-5 h-5 mr-3"
                     />
-                    <span className="text-sm text-black">{tech.name}</span>
+                    <span className="text-sm font-medium text-black">{tech.name}</span>
                   </motion.div>
                 ))}
             </div>
@@ -355,13 +377,19 @@ const Skills_Technologies = () => {
 
           {/* Databases & Tools */}
           <motion.div
-            className="bg-cream p-6 rounded-xl shadow-lg border border-[#F5E6CC] hover:shadow-xl transition-shadow"
+            className="bg-white p-8 rounded-2xl shadow-xl border border-[#F5E6CC] hover:shadow-2xl transition-all duration-300"
             variants={itemVariants}
             transition={{ delay: 0.3 }}
           >
-            <h3 className="text-xl font-semibold mb-4 text-red-600 flex items-center">
-              <FaDatabase className="mr-2 text-red-500" /> Databases & Tools
-            </h3>
+            <div className="flex items-center mb-6">
+              <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mr-4">
+                <FaDatabase className="text-2xl text-amber-500" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-black">Tools & DB</h3>
+                <p className="text-sm text-[#666666]">Database & Development</p>
+              </div>
+            </div>
             <div className="grid grid-cols-2 gap-3">
               {technologies
                 .filter(
@@ -371,15 +399,15 @@ const Skills_Technologies = () => {
                 .map((tech, index) => (
                   <motion.div
                     key={index}
-                    className="bg-white p-3 rounded-lg shadow-sm flex items-center transition-all duration-300 ease-in-out hover:bg-red-50 hover:-translate-y-1 hover:shadow-md"
-                    whileHover={{ scale: 1.05 }}
+                    className="bg-[#F5E6CC] p-3  rounded-xl flex items-center transition-all duration-200 hover:bg-amber-50 hover:translate-x-1"
+                    whileHover={{ scale: 1.03 }}
                   >
                     <img
                       src={tech.icon}
                       alt={tech.name}
-                      className="w-6 h-6 mr-2"
+                      className="w-5 h-5 mr-3"
                     />
-                    <span className="text-sm text-black">{tech.name}</span>
+                    <span className="text-sm font-medium text-black">{tech.name}</span>
                   </motion.div>
                 ))}
             </div>
@@ -397,11 +425,12 @@ const Skills_Technologies = () => {
           }
         }
         .animate-logoLoop {
-          animation: logoLoop 30s linear infinite;
+          animation: logoLoop 40s linear infinite;
         }
         .animate-logoLoop:hover {
           animation-play-state: paused;
         }
+        
       `}</style>
     </section>
   );
