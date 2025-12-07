@@ -131,7 +131,7 @@ const About = () => {
                     </div>
                     <div>
                       <a 
-                        href="https://www.linkedin.com/in/rohit-xten/"
+                        href="https://www.linkedin.com/in/rohit-kumar-783127334"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-black hover:text-[#DC2626] transition-colors font-semibold"
@@ -148,7 +148,7 @@ const About = () => {
                     </div>
                     <div>
                       <a 
-                        href="https://github.com/rohit-xten"
+                        href="https://github.com/Rohit03022006"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-black hover:text-[#DC2626] transition-colors font-semibold"
@@ -182,7 +182,7 @@ const About = () => {
                     </div>
                     <div>
                       <a 
-                        href="mailto:rohit@example.com"
+                        href="mailto:kumarrohit67476@gmail.com"
                         className="text-black hover:text-[#DC2626] transition-colors font-semibold"
                       >
                         Email Me
@@ -338,9 +338,20 @@ const About = () => {
                     link: null
                   },
                   {
-                    name: "Docker Certified Associate",
-                    status: "ongoing", 
+                    name: "JavaScript Algorithms & Data Structures",
+                    provider: "freeCodeCamp", 
+                    link: "https://www.freecodecamp.org/certification/rohit_xten/javascript-algorithms-and-data-structures-v8"
+                  },
+                  {
+                    name: "Complete DevOps Course",
+                    provider: "GeeksforGeeks",
+                    status: "ongoing",
                     link: null
+                  },
+                  {
+                    name: "Github",
+                    provider: "GeeksforGeeks",
+                    link: "https://www.geeksforgeeks.org/certificate/4ec91cbdeec0a11cc0bea1ef44b24dc5?utm_source=socials&utm_medium=cc_link"
                   },
                   {
                     name: "MongoDB Developer's Toolkit",
@@ -353,14 +364,8 @@ const About = () => {
                     link: "https://www.freecodecamp.org/certification/rohit_xten/responsive-web-design"
                   },
                   {
-                    name: "JavaScript Algorithms & Data Structures",
-                    provider: "freeCodeCamp", 
-                    link: "https://www.freecodecamp.org/certification/rohit_xten/javascript-algorithms-and-data-structures-v8"
-                  },
-                  {
-                    name: "Complete DevOps Course",
-                    provider: "GeeksforGeeks",
-                    status: "ongoing",
+                    name: "Docker Certified Associate",
+                    status: "ongoing", 
                     link: null
                   }
                 ].map((cert, index) => (

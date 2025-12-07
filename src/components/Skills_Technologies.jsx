@@ -44,11 +44,6 @@ const Skills_Technologies = () => {
       category: "backend",
     },
     {
-      name: "Chart.js",
-      icon: "https://www.chartjs.org/media/logo-title.svg",
-      category: "tools",
-    },
-    {
       name: "C++",
       icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg",
       category: "backend",
@@ -79,11 +74,6 @@ const Skills_Technologies = () => {
       category: "devops",
     },
     {
-      name: "GraphQL",
-      icon: "https://www.vectorlogo.zone/logos/graphql/graphql-icon.svg",
-      category: "backend",
-    },
-    {
       name: "HTML5",
       icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg",
       category: "frontend",
@@ -97,11 +87,6 @@ const Skills_Technologies = () => {
       name: "Jenkins",
       icon: "https://www.vectorlogo.zone/logos/jenkins/jenkins-icon.svg",
       category: "devops",
-    },
-    {
-      name: "Jest",
-      icon: "https://www.vectorlogo.zone/logos/jestjsio/jestjsio-icon.svg",
-      category: "tools",
     },
     {
       name: "Kubernetes",
@@ -171,6 +156,66 @@ const Skills_Technologies = () => {
     {
       name: "MLflow",
       icon: "https://raw.githubusercontent.com/mlflow/mlflow/refs/heads/master/assets/logo.svg",
+      category: "tools",
+    },
+    {
+      name: "Terraform",
+      icon: "https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg",
+      category: "devops",
+    },
+    {
+      name: "Helm",
+      icon: "https://www.vectorlogo.zone/logos/helmsh/helmsh-icon.svg",
+      category: "devops",
+    },
+    {
+      name: "OWASP",
+      icon: "https://owasp.org/assets/images/logo.png",
+      category: "tools",
+    },
+    {
+      name: "Trivy",
+      icon: "https://raw.githubusercontent.com/aquasecurity/trivy/main/docs/imgs/logo.png",
+      category: "tools",
+    },
+    {
+      name: "SonarQube",
+      icon: "https://assets-eu-01.kc-usercontent.com:443/55017e37-262d-017b-afd6-daa9468cbc30/8e59bcad-6e39-41dc-abd9-a0e251e8d63f/Sonar%20%282%29.svg?w=128&h=32&fit=crop&q=80",
+      category: "tools",
+    },
+    {
+      name: "Redis",
+      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/redis/redis-original-wordmark.svg",
+      category: "database",
+    },
+    {
+      name: "Firebase",
+      icon: "https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg",
+      category: "database",
+    },
+    {
+      name: "Ansible",
+      icon: "https://www.vectorlogo.zone/logos/ansible/ansible-icon.svg",
+      category: "devops",
+    },
+    {
+      name: "Prometheus",
+      icon: "https://www.vectorlogo.zone/logos/prometheusio/prometheusio-icon.svg",
+      category: "devops",
+    },
+    {
+      name: "Grafana",
+      icon: "https://www.vectorlogo.zone/logos/grafana/grafana-icon.svg",
+      category: "devops",
+    },
+    {
+      name: "GitHub Actions",
+      icon: "https://www.vectorlogo.zone/logos/github/github-icon.svg",
+      category: "tools",
+    },
+    {
+      name: "Selenium",
+      icon: "https://raw.githubusercontent.com/SeleniumHQ/selenium/trunk/common/images/selenium_logo_mark_green.svg",
       category: "tools",
     },
   ];
