@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { FaGithub, FaCode, FaCloud, FaDatabase, FaTools } from "react-icons/fa";
+import { FaTools , FaCode, FaDatabase } from "react-icons/fa";
+import { GiServerRack } from "react-icons/gi";
 import { motion } from "framer-motion";
-
+import { ImInfinite } from "react-icons/im";
 const Skills_Technologies = () => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -92,6 +93,11 @@ const Skills_Technologies = () => {
       name: "Kubernetes",
       icon: "https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg",
       category: "devops",
+    },
+    {
+      name: "GitHub",
+      icon: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+      category: "tools",
     },
     {
       name: "Linux",
@@ -244,16 +250,6 @@ const Skills_Technologies = () => {
     },
   };
 
-  const getCategoryColor = (category) => {
-    const colors = {
-      frontend: { bg: "bg-blue-50", border: "border-blue-200", text: "text-blue-600", icon: "text-blue-500", hover: "hover:bg-blue-100" },
-      backend: { bg: "bg-green-50", border: "border-green-200", text: "text-green-600", icon: "text-green-500", hover: "hover:bg-green-100" },
-      devops: { bg: "bg-purple-50", border: "border-purple-200", text: "text-purple-600", icon: "text-purple-500", hover: "hover:bg-purple-100" },
-      database: { bg: "bg-amber-50", border: "border-amber-200", text: "text-amber-600", icon: "text-amber-500", hover: "hover:bg-amber-100" },
-      tools: { bg: "bg-amber-50", border: "border-amber-200", text: "text-amber-600", icon: "text-amber-500", hover: "hover:bg-amber-100" },
-    };
-    return colors[category] || { bg: "bg-gray-50", border: "border-gray-200", text: "text-gray-600", icon: "text-gray-500", hover: "hover:bg-gray-100" };
-  };
 
   return (
     <section
@@ -358,7 +354,7 @@ const Skills_Technologies = () => {
           >
             <div className="flex items-center mb-6">
               <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mr-4">
-                <FaCloud className="text-2xl text-green-500" />
+                <GiServerRack  className="text-2xl text-green-500" />
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-black">Backend</h3>
@@ -383,6 +379,36 @@ const Skills_Technologies = () => {
                   </motion.div>
                 ))}
             </div>
+            <div className="flex items-center mb-6 mt-4 border-t-[1px] border-[#F5E6CC] pt-4">
+              <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mr-4">
+                <FaDatabase className="text-2xl text-amber-500" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-black">DB</h3>
+                <p className="text-sm text-[#666666]">Database</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              {technologies
+                .filter(
+                  (tech) =>
+                    tech.category === "database"
+                )
+                .map((tech, index) => (
+                  <motion.div
+                    key={index}
+                    className="bg-[#F5E6CC] p-3 rounded-xl flex items-center gap-2 transition-all duration-200 hover:bg-amber-50 hover:translate-x-1 min-w-0"
+                    whileHover={{ scale: 1.03 }}
+                  >
+                    <img
+                      src={tech.icon}
+                      alt={tech.name}
+                      className="w-5 h-5 flex-shrink-0"
+                    />
+                    <span className="text-sm font-medium text-black truncate">{tech.name}</span>
+                  </motion.div>
+                ))}
+            </div>
           </motion.div>
 
           {/* DevOps & Cloud */}
@@ -392,8 +418,8 @@ const Skills_Technologies = () => {
             transition={{ delay: 0.2 }}
           >
             <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mr-4">
-                <FaTools className="text-2xl text-purple-500" />
+              <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mr-4">
+                <ImInfinite   className="text-2xl text-black" />
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-black">DevOps</h3>
@@ -420,7 +446,7 @@ const Skills_Technologies = () => {
             </div>
           </motion.div>
 
-          {/* Databases & Tools */}
+          {/* Tools */}
           <motion.div
             className="bg-white p-8 rounded-2xl shadow-xl border border-[#F5E6CC] hover:shadow-2xl transition-all duration-300"
             variants={itemVariants}
@@ -428,18 +454,18 @@ const Skills_Technologies = () => {
           >
             <div className="flex items-center mb-6">
               <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mr-4">
-                <FaDatabase className="text-2xl text-amber-500" />
+                <FaTools  className="text-2xl text-amber-500" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-black">Tools & DB</h3>
-                <p className="text-sm text-[#666666]">Database & Development</p>
+                <h3 className="text-2xl font-bold text-black">Tools</h3>
+                <p className="text-sm text-[#666666]">Development Tools</p>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-3">
               {technologies
                 .filter(
                   (tech) =>
-                    tech.category === "database" || tech.category === "tools"
+                     tech.category === "tools"
                 )
                 .map((tech, index) => (
                   <motion.div

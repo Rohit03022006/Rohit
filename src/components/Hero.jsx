@@ -5,11 +5,11 @@ import {
   FaInstagram,
   FaEnvelope,
   FaCode,
-  FaServer,
   FaArrowDown,
   FaDownload,
   FaExternalLinkAlt,
 } from "react-icons/fa";
+import { IoMdInfinite } from "react-icons/io";
 import { Typewriter } from "react-simple-typewriter";
 import { motion } from "framer-motion";
 
@@ -283,7 +283,7 @@ const Hero = () => {
           >
             <div className="relative">
               <motion.div
-                className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden shadow-2xl border-8 border-white"
+                className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl border-8 border-white"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 variants={floatVariants}
@@ -291,7 +291,7 @@ const Hero = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-[#DC2626]/10 to-transparent z-10"></div>
                 <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/a/a6/020_The_lion_king_Snyggve_in_the_Serengeti_National_Park_Photo_by_Giles_Laurent.jpg"
+                  src="https://camo.githubusercontent.com/3b525d0f323831680479343ef045164f95afb6911f066dc4af2070ece4dd7dc7/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f373858434642474f6c53366b65593142696c2f67697068792e676966"
                   alt="Programmer GIF"
                   className="w-full h-full object-cover"
                 />
@@ -322,7 +322,7 @@ const Hero = () => {
               >
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[#DBEAFE] rounded-lg flex items-center justify-center">
-                    <FaServer className="text-blue-600 text-sm sm:text-lg" />
+                    <IoMdInfinite  className="text-black text-sm sm:text-lg " />
                   </div>
                   <div>
                     <div className="font-bold text-black text-sm sm:text-base">DevOps</div>
