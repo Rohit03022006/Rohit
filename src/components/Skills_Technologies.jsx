@@ -105,6 +105,11 @@ const Skills_Technologies = () => {
       category: "devops",
     },
     {
+      name: "Vim",
+      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/vim/vim-original.svg",
+      category: "tools",
+    },
+    {
       name: "MongoDB",
       icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg",
       category: "database",
