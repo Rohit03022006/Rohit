@@ -90,6 +90,11 @@ const Skills_Technologies = () => {
       category: "devops",
     },
     {
+      name: "Vite",
+      icon: "https://vitejs.dev/logo.svg",
+      category: "frontend",
+    },
+    {
       name: "Kubernetes",
       icon: "https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg",
       category: "devops",
@@ -152,11 +157,6 @@ const Skills_Technologies = () => {
     {
       name: "TypeScript",
       icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg",
-      category: "frontend",
-    },
-    {
-      name: "Vue.js",
-      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original-wordmark.svg",
       category: "frontend",
     },
     {

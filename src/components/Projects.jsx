@@ -9,6 +9,10 @@ import {
   FaTools,
   FaStar,
   FaEye,
+  FaMobileAlt,
+  FaChartLine,
+  FaUserShield,
+  FaBook,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 
@@ -38,80 +42,168 @@ const Projects = () => {
     {
       id: 1,
       title: "Flight Prediction System",
-      description: "A machine learning-powered web application that predicts flight prices and patterns using advanced data analytics and visualization.",
-      image: "https://raw.githubusercontent.com/Rohit03022006/flight-prediction/main/Flight%20Price%20Prediction%20Web%20page.PNG",
+      description:
+        "A machine learning-powered web application that predicts flight prices and patterns using advanced data analytics and visualization.",
+      image:
+        "https://raw.githubusercontent.com/Rohit03022006/flight-prediction/main/Flight%20Price%20Prediction%20Web%20page.PNG",
       githubUrl: "https://github.com/Rohit03022006/flight-prediction",
       liveUrl: null,
-      tags: ["React", "Machine Learning", "Data Visualization", "Docker", "Flask", "CI/CD"],
+      tags: [
+        "React",
+        "Machine Learning",
+        "Data Visualization",
+        "Docker",
+        "Flask",
+        "CI/CD",
+      ],
       category: "fullstack",
       featured: true,
       techIcons: [FaCode, FaDatabase, FaTools],
-      status: "completed"
+      status: "completed",
     },
     {
       id: 2,
       title: "PESTEND - a IOT and AI-based Pest Control System",
-      description: "Protect Your Crops with AI featuring real-time updates and machine learning.",
+      description:
+        "Protect Your Crops with AI featuring real-time updates and machine learning.",
       image: null,
       githubUrl: "https://github.com/Rohit03022006/PESTEND",
       liveUrl: null,
-      tags: ["React", "Flask", "MongoDB", "IOT", "REST API", "Machine Learning", "Firebase", "AWS","CI/CD"],
+      tags: [
+        "React",
+        "Flask",
+        "MongoDB",
+        "IOT",
+        "REST API",
+        "Machine Learning",
+        "Firebase",
+        "AWS",
+        "CI/CD",
+      ],
       category: "fullstack",
       featured: true,
       techIcons: [FaCode, FaServer, FaDatabase],
-      status: "completed"
+      status: "completed",
     },
     {
       id: 3,
       title: "2-Tier Flask Application",
-      description: "A scalable two-tier web application with Flask backend and MySQL database, implementing secure messaging functionality and user management.",
+      description:
+        "A scalable two-tier web application with Flask backend and MySQL database, implementing secure messaging functionality and user management.",
       image: null,
       githubUrl: "https://github.com/Rohit03022006/2-Tier-Application",
       liveUrl: null,
-      tags: ["Flask", "MySQL", "Python", "RESTful", "Docker", "Nginx", "Kubernetes", "CI/CD"],
+      tags: [
+        "Flask",
+        "MySQL",
+        "Python",
+        "RESTful",
+        "Docker",
+        "Nginx",
+        "Kubernetes",
+        "CI/CD",
+      ],
       category: "devops",
       featured: false,
       techIcons: [FaServer, FaDatabase],
-      status: "completed"
+      status: "completed",
     },
     {
       id: 4,
       title: "Recipe Manager",
-      image: "https://raw.githubusercontent.com/Rohit03022006/Recipe-Manager/main/Images/Web/base.png",
-      description: "A comprehensive recipe management application with search and favorite features.",
+      image:
+        "https://raw.githubusercontent.com/Rohit03022006/Recipe-Manager/main/Images/Web/base.png",
+      description:
+        "A comprehensive recipe management application with search and favorite features.",
       githubUrl: "https://github.com/Rohit03022006/Recipe-Manager/",
       liveUrl: null,
-      tags: ["React", "Node.js", "MongoDB", "Express", "REST API", "Docker", "CI/CD"],
+      tags: [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Express",
+        "REST API",
+        "Docker",
+        "CI/CD",
+      ],
       category: "fullstack",
       featured: true,
       techIcons: [FaCode, FaDatabase, FaTools],
-      status: "completed"
+      status: "completed",
     },
     {
       id: 5,
       title: "Expense Tracker",
-      description: "A comprehensive expense tracking application with visualization and budgeting features.",
-      image: "https://raw.githubusercontent.com/Rohit03022006/expense-tracker/master/Screenshots/base.png",
+      description:
+        "A comprehensive expense tracking application with visualization and budgeting features.",
+      image:
+        "https://raw.githubusercontent.com/Rohit03022006/expense-tracker/master/Screenshots/base.png",
       githubUrl: "https://github.com/Rohit03022006/expense-tracker",
       liveUrl: null,
-      tags: ["React", "Node.js", "MongoDB", "Chart.js", "Docker", "CI/CD", "Express"],
+      tags: [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Chart.js",
+        "Docker",
+        "CI/CD",
+        "Express",
+      ],
       category: "fullstack",
       featured: false,
-      techIcons: [FaCode, FaDatabase, FaTools],
-      status: "completed"
+      techIcons: [FaCode, FaDatabase, FaTools, FaUserShield],
+      status: "completed",
     },
     {
       id: 6,
       title: "Dr. Parneeta Chaudhary Portfolio",
-      description: "A professional portfolio website for Dr. Parneeta Chaudhary, showcasing her work, achievements, and professional background with modern design and responsive layout.",
-      image: "https://raw.githubusercontent.com/Rohit03022006/Dr.-Parneeta-Chaudhary-Portfolio/master/page.png",
-      githubUrl: "https://github.com/Rohit03022006/Dr.-Parneeta-Chaudhary-Portfolio",
+      description:
+        "A professional portfolio website for Dr. Parneeta Chaudhary, showcasing her work, achievements, and professional background with modern design and responsive layout.",
+      image:
+        "https://raw.githubusercontent.com/Rohit03022006/Dr.-Parneeta-Chaudhary-Portfolio/master/page.png",
+      githubUrl:
+        "https://github.com/Rohit03022006/Dr.-Parneeta-Chaudhary-Portfolio",
       liveUrl: "https://dr-parneeta-chaudhary-portfolio.vercel.app",
       tags: ["Next js"],
       category: "frontend",
       featured: false,
       techIcons: [FaCode, FaMobile],
-      status: "completed"
+      status: "completed",
+    },
+    {
+      id: 7,
+      title: "Library Management System",
+      description:
+        "A comprehensive full-stack library management platform with user authentication, book catalog management, borrowing system, QR code generation, and analytics dashboard.",
+      image:
+        "https://raw.githubusercontent.com/Rohit03022006/library-management-system/main/Screenshot/Home.PNG",
+      githubUrl: "https://github.com/Rohit03022006/library-management-system",
+      liveUrl: null,
+      tags: [
+        "React", "Node.js","Express", "MongoDB", "Tailwind CSS", "REST API", "Cloudinary", "QR Code Generation", "JWT Authentication", "Docker", "CI/CD", "Kubernetes",
+      ],
+      category: "fullstack",
+      featured: true,
+      techIcons: [
+        FaBook, FaUserShield, FaChartLine, FaDatabase, FaMobileAlt,
+      ],
+      status: "completed",
+      features: [
+        "User Authentication & Role-Based Access",
+        "Book Catalog with Advanced Search",
+        "Borrowing System with Auto Fine Calculation",
+        "QR Code Generation for Physical Books",
+        "Analytics Dashboard with Real-time Stats",
+        "Cloud Image Management with Cloudinary",
+        "Responsive Mobile-First Design",
+        "Secure RESTful API with JWT",
+      ],
+      techStack: {
+        frontend: ["React", "Vite", "Tailwind CSS"],
+        backend: ["Node.js", "Express", "MongoDB"],
+        services: ["Cloudinary", "QR Code Generation", "REST API"],
+        tools: ["Git", "Postman", "VS Code", "MongoDB Atlas"],
+      },
     },
   ];
 
@@ -119,7 +211,7 @@ const Projects = () => {
   const getTechIcons = (project) => {
     // Return project's techIcons if they exist
     if (project.techIcons) return project.techIcons;
-    
+
     // Default icons based on category
     const defaultIcons = {
       fullstack: [FaCode, FaServer, FaDatabase],
@@ -127,21 +219,38 @@ const Projects = () => {
       backend: [FaServer, FaDatabase],
       devops: [FaServer, FaTools],
     };
-    
+
     return defaultIcons[project.category] || [FaCode];
   };
 
   const filters = [
     { id: "all", label: "All Projects", count: projects.length },
-    { id: "fullstack", label: "Full Stack", count: projects.filter(p => p.category === "fullstack").length },
-    { id: "frontend", label: "Frontend", count: projects.filter(p => p.category === "frontend").length },
-    { id: "backend", label: "Backend", count: projects.filter(p => p.category === "backend").length },
-    { id: "devops", label: "DevOps", count: projects.filter(p => p.category === "devops").length },
+    {
+      id: "fullstack",
+      label: "Full Stack",
+      count: projects.filter((p) => p.category === "fullstack").length,
+    },
+    {
+      id: "frontend",
+      label: "Frontend",
+      count: projects.filter((p) => p.category === "frontend").length,
+    },
+    {
+      id: "backend",
+      label: "Backend",
+      count: projects.filter((p) => p.category === "backend").length,
+    },
+    {
+      id: "devops",
+      label: "DevOps",
+      count: projects.filter((p) => p.category === "devops").length,
+    },
   ];
 
-  const filteredProjects = activeFilter === "all" 
-    ? projects 
-    : projects.filter(project => project.category === activeFilter);
+  const filteredProjects =
+    activeFilter === "all"
+      ? projects
+      : projects.filter((project) => project.category === activeFilter);
 
   const getCategoryColor = (category) => {
     const colors = {
@@ -156,12 +265,17 @@ const Projects = () => {
   const getStatusBadge = (status) => {
     const statusConfig = {
       completed: { color: "bg-green-100 text-green-800", label: "Completed" },
-      inProgress: { color: "bg-yellow-100 text-yellow-800", label: "In Progress" },
+      inProgress: {
+        color: "bg-yellow-100 text-yellow-800",
+        label: "In Progress",
+      },
       planned: { color: "bg-blue-100 text-blue-800", label: "Planned" },
     };
     const config = statusConfig[status] || statusConfig.completed;
     return (
-      <span className={`px-3 py-1 rounded-full text-xs font-medium ${config.color}`}>
+      <span
+        className={`px-3 py-1 rounded-full text-xs font-medium ${config.color}`}
+      >
         {config.label}
       </span>
     );
@@ -184,10 +298,11 @@ const Projects = () => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-black">
             Featured <span className="text-[#DC2626]">Projects</span>
           </h2>
-          
+
           <p className="text-base sm:text-lg md:text-xl text-[#666666] max-w-3xl mx-auto leading-relaxed">
-            A curated collection of my recent work showcasing innovative solutions, 
-            clean code practices, and cutting-edge technologies across full-stack development.
+            A curated collection of my recent work showcasing innovative
+            solutions, clean code practices, and cutting-edge technologies
+            across full-stack development.
           </p>
         </motion.div>
 
@@ -210,7 +325,11 @@ const Projects = () => {
               whileTap={{ scale: 0.95 }}
             >
               {filter.label}
-              <span className={`ml-2 font-bold ${activeFilter === filter.id ? "text-white" : "text-[#DC2626]"}`}>
+              <span
+                className={`ml-2 font-bold ${
+                  activeFilter === filter.id ? "text-white" : "text-[#DC2626]"
+                }`}
+              >
                 {filter.count}
               </span>
             </motion.button>
@@ -231,10 +350,7 @@ const Projects = () => {
               onMouseEnter={() => setHoveredProject(project.id)}
               onMouseLeave={() => setHoveredProject(null)}
             >
-              <motion.div
-                className="bg-white rounded-2xl shadow-xl border border-[#F5E6CC] overflow-hidden hover:shadow-2xl transition-all duration-300 h-full flex flex-col"
-              >
-                
+              <motion.div className="bg-white rounded-2xl shadow-xl border border-[#F5E6CC] overflow-hidden hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
                 {/* Project Image/Placeholder */}
                 <div className="relative h-48 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
                   {project.image ? (
@@ -244,18 +360,22 @@ const Projects = () => {
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <div className={`w-full h-full flex items-center justify-center bg-gradient-to-br ${getCategoryColor(project.category)}`}>
+                    <div
+                      className={`w-full h-full flex items-center justify-center bg-gradient-to-br ${getCategoryColor(
+                        project.category
+                      )}`}
+                    >
                       <div className="text-white text-center">
                         <FaCode className="text-4xl mb-2 mx-auto" />
-                        <span className="text-sm font-semibold">{project.title}</span>
+                        <span className="text-sm font-semibold">
+                          {project.title}
+                        </span>
                       </div>
                     </div>
                   )}
-                  
+
                   {/* Overlay with actions */}
-                  <motion.div 
-                    className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100"
-                  >
+                  <motion.div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
                     <div className="flex gap-4 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                       <motion.a
                         href={project.githubUrl}
@@ -302,7 +422,7 @@ const Projects = () => {
                     <h3 className="text-xl font-bold text-black mb-3 group-hover:text-[#DC2626] transition-colors duration-200">
                       {project.title}
                     </h3>
-                    
+
                     <p className="text-[#666666] mb-4 leading-relaxed line-clamp-3">
                       {project.description}
                     </p>
