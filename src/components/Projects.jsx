@@ -213,9 +213,9 @@ const Projects = () => {
   id: 8,
   title: "URL Shortener API",
   description: "A production-ready URL shortener service with analytics, authentication, and rate limiting",
-  image: "https://raw.githubusercontent.com/Rohit03022006/url-shortener/main/screenshot.png",
+  image: null,
   githubUrl: "https://github.com/Rohit03022006/url-shortener",
-  liveUrl: "http://localhost:3000", 
+  liveUrl: null, 
   tags: [
     "Node.js", "Express", "PostgreSQL", "Redis", "REST API", 
     "JWT Authentication", "Rate Limiting", "URL Shortening"
