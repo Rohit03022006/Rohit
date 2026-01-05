@@ -13,6 +13,10 @@ import {
   FaChartLine,
   FaUserShield,
   FaBook,
+  FaLink,
+  FaBolt,
+  FaUserLock,
+  FaChartBar
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 
@@ -205,6 +209,45 @@ const Projects = () => {
         tools: ["Git", "Postman", "VS Code", "MongoDB Atlas"],
       },
     },
+    {
+  id: 8,
+  title: "URL Shortener API",
+  description: "A production-ready URL shortener service with analytics, authentication, and rate limiting",
+  image: "https://raw.githubusercontent.com/Rohit03022006/url-shortener/main/screenshot.png",
+  githubUrl: "https://github.com/Rohit03022006/url-shortener",
+  liveUrl: "http://localhost:3000", 
+  tags: [
+    "Node.js", "Express", "PostgreSQL", "Redis", "REST API", 
+    "JWT Authentication", "Rate Limiting", "URL Shortening"
+  ],
+  category: "backend",
+  featured: true,
+  techIcons: [
+  FaLink,      
+  FaDatabase,
+  FaBolt,   
+  FaUserLock,   FaChartBar,  
+],
+  status: "completed",
+  features: [
+    "Shorten URLs with custom aliases",
+    "Secure JWT-based user authentication",
+    "API key support for programmatic access",
+    "Real-time click analytics and tracking",
+    "Redis caching for ultra-fast redirects",
+    "Rate limiting to prevent abuse",
+    "URL expiration with automatic cleanup",
+    "Bulk URL shortening support",
+    "PostgreSQL database with Neon hosting",
+    "Comprehensive Postman API documentation"
+  ],
+  techStack: {
+    backend: ["Node.js", "Express.js", "PostgreSQL (Neon)", "Redis (Upstash)"],
+    authentication: ["JWT", "bcrypt", "API Keys"],
+    middleware: ["Helmet", "CORS", "Rate Limiting", "Compression"],
+    tools: ["Git", "Postman", "VS Code", "Nodemon", "Dotenv"]
+  }
+},
   ];
 
   // Helper function to get tech icons for a project
