@@ -16,14 +16,23 @@ import {
   FaLink,
   FaBolt,
   FaUserLock,
-  FaChartBar
+  FaChartBar,
+  FaBrain,
+  FaRobot,
+  FaTerminal,
+  FaTimes,
+  FaAws,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { data, tr } from "framer-motion/client";
 
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeFilter, setActiveFilter] = useState("all");
   const [hoveredProject, setHoveredProject] = useState(null);
+  const [visibleCount, setVisibleCount] = useState(6);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,6 +50,29 @@ const Projects = () => {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape" && isModalOpen) {
+        setIsModalOpen(false);
+      }
+    };
+
+    if (isModalOpen) {
+      document.body.style.overflow = "hidden";
+      document.body.classList.add("modal-open");
+      document.addEventListener("keydown", handleKeyDown);
+    } else {
+      document.body.style.overflow = "unset";
+      document.body.classList.remove("modal-open");
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+      document.body.classList.remove("modal-open");
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isModalOpen]);
 
   const projects = [
     {
@@ -95,22 +127,20 @@ const Projects = () => {
       description:
         "A scalable two-tier web application with Flask backend and MySQL database, implementing secure messaging functionality and user management.",
       image: null,
-      githubUrl: "https://github.com/Rohit03022006/2-Tier-Application",
+      githubUrl: null,
       liveUrl: null,
-      tags: [
-        "Flask",
-        "MySQL",
-        "Python",
-        "RESTful",
-        "Docker",
-        "Nginx",
-        "Kubernetes",
-        "CI/CD",
-      ],
+      tags: ["Flask", "MySQL", "REST API", "Docker", "CI/CD"],
       category: "devops",
-      featured: false,
-      techIcons: [FaServer, FaDatabase],
-      status: "completed",
+      featured: true,
+      features: [
+        "User registration and authentication",
+        "Send and receive messages between users",
+        "Admin panel for user and message management",
+        "Dockerized for easy deployment",
+        "CI/CD pipeline for automated testing and deployment",
+      ],
+      techIcons: [FaServer, FaDatabase, FaAws],
+      status: "in-progress",
     },
     {
       id: 4,
@@ -132,7 +162,18 @@ const Projects = () => {
       ],
       category: "fullstack",
       featured: true,
-      techIcons: [FaCode, FaDatabase, FaTools],
+      features: [
+        "Secure user authentication with JWT",
+        "Create, edit, and delete recipes",
+        "Like and comment on recipes",
+        "Follow other users and view their recipes",
+        "Responsive UI for mobile and desktop",
+        "Instant updates without full page reloads",
+        "Built with MongoDB, Express.js, React, Node.js",
+        "Styled with Tailwind CSS",
+        "Uses Docker for easy setup and deployment",
+      ],
+      techIcons: [FaCode, FaDatabase, FaTools, FaUserShield, FaMobile],
       status: "completed",
     },
     {
@@ -154,8 +195,19 @@ const Projects = () => {
         "Express",
       ],
       category: "fullstack",
-      featured: false,
+      featured: true,
       techIcons: [FaCode, FaDatabase, FaTools, FaUserShield],
+      features: [
+        "User authentication and secure expense management",
+        "Add, edit, and delete expenses with category-based tracking",
+        "Interactive charts and visual analytics using Chart.js",
+        "Monthly and yearly expense summaries",
+        "Budget planning with spending limit alerts",
+        "RESTful API built with Node.js and Express",
+        "MongoDB database with optimized schema design",
+        "Dockerized application with CI/CD pipeline support",
+        "Responsive and mobile-friendly user interface",
+      ],
       status: "completed",
     },
     {
@@ -184,13 +236,22 @@ const Projects = () => {
       githubUrl: "https://github.com/Rohit03022006/library-management-system",
       liveUrl: null,
       tags: [
-        "React", "Node.js","Express", "MongoDB", "Tailwind CSS", "REST API", "Cloudinary", "QR Code Generation", "JWT Authentication", "Docker", "CI/CD", "Kubernetes",
+        "React",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Tailwind CSS",
+        "REST API",
+        "Cloudinary",
+        "QR Code Generation",
+        "JWT Authentication",
+        "Docker",
+        "CI/CD",
+        "Kubernetes",
       ],
       category: "fullstack",
       featured: true,
-      techIcons: [
-        FaBook, FaUserShield, FaChartLine, FaDatabase, FaMobileAlt,
-      ],
+      techIcons: [FaBook, FaUserShield, FaChartLine, FaDatabase, FaMobileAlt],
       status: "completed",
       features: [
         "User Authentication & Role-Based Access",
@@ -210,44 +271,95 @@ const Projects = () => {
       },
     },
     {
-  id: 8,
-  title: "URL Shortener API",
-  description: "A production-ready URL shortener service with analytics, authentication, and rate limiting",
-  image: null,
-  githubUrl: "https://github.com/Rohit03022006/url-shortener",
-  liveUrl: null, 
-  tags: [
-    "Node.js", "Express", "PostgreSQL", "Redis", "REST API", 
-    "JWT Authentication", "Rate Limiting", "URL Shortening"
-  ],
-  category: "backend",
-  featured: true,
-  techIcons: [
-  FaLink,      
-  FaDatabase,
-  FaBolt,   
-  FaUserLock,   FaChartBar,  
-],
-  status: "completed",
-  features: [
-    "Shorten URLs with custom aliases",
-    "Secure JWT-based user authentication",
-    "API key support for programmatic access",
-    "Real-time click analytics and tracking",
-    "Redis caching for ultra-fast redirects",
-    "Rate limiting to prevent abuse",
-    "URL expiration with automatic cleanup",
-    "Bulk URL shortening support",
-    "PostgreSQL database with Neon hosting",
-    "Comprehensive Postman API documentation"
-  ],
-  techStack: {
-    backend: ["Node.js", "Express.js", "PostgreSQL (Neon)", "Redis (Upstash)"],
-    authentication: ["JWT", "bcrypt", "API Keys"],
-    middleware: ["Helmet", "CORS", "Rate Limiting", "Compression"],
-    tools: ["Git", "Postman", "VS Code", "Nodemon", "Dotenv"]
-  }
-},
+      id: 8,
+      title: "URL Shortener API",
+      description:
+        "A production-ready URL shortener service with analytics, authentication, and rate limiting",
+      image: null,
+      githubUrl: "https://github.com/Rohit03022006/url-shortener",
+      liveUrl: null,
+      tags: [
+        "Node.js",
+        "Express",
+        "PostgreSQL",
+        "Redis",
+        "REST API",
+        "JWT Authentication",
+        "Rate Limiting",
+        "URL Shortening",
+      ],
+      category: "backend",
+      featured: true,
+      techIcons: [FaLink, FaDatabase, FaBolt, FaUserLock, FaChartBar],
+      status: "completed",
+      features: [
+        "Shorten URLs with custom aliases",
+        "Secure JWT-based user authentication",
+        "API key support for programmatic access",
+        "Real-time click analytics and tracking",
+        "Redis caching for ultra-fast redirects",
+        "Rate limiting to prevent abuse",
+        "URL expiration with automatic cleanup",
+        "Bulk URL shortening support",
+        "PostgreSQL database with Neon hosting",
+        "Comprehensive Postman API documentation",
+      ],
+      techStack: {
+        backend: [
+          "Node.js",
+          "Express.js",
+          "PostgreSQL (Neon)",
+          "Redis (Upstash)",
+        ],
+        authentication: ["JWT", "bcrypt", "API Keys"],
+        middleware: ["Helmet", "CORS", "Rate Limiting", "Compression"],
+        tools: ["Git", "Postman", "VS Code", "Nodemon", "Dotenv"],
+      },
+    },
+    {
+      id: 9,
+      title: "Agentix – AI Agent CLI Platform",
+      description:
+        "A developer-focused AI Agent CLI for generating applications, managing tools, and interacting with AI agents locally with a modern web interface",
+      image:
+        "https://raw.githubusercontent.com/Rohit03022006/Agentix/master/CLI.png",
+      githubUrl: "https://github.com/Rohit03022006/Agentix",
+      liveUrl: null,
+      tags: [
+        "AI Agents",
+        "CLI Tool",
+        "Next.js",
+        "Node.js",
+        "Prisma",
+        "Authentication",
+        "Google Gemini",
+        "Developer Tools",
+      ],
+      category: "fullstack",
+      featured: true,
+      techIcons: [FaRobot, FaTerminal, FaServer, FaDatabase, FaBrain],
+      status: "in-progress",
+      features: [
+        "Interactive AI-powered CLI for application generation",
+        "Schema-driven code generation using Zod",
+        "Google Gemini integration via ai-sdk/google",
+        "Production-ready project scaffolding with complete file trees",
+        "Next.js frontend dashboard for managing agents",
+        "Authentication and authorization using Better Auth",
+        "Prisma ORM with migrations and database support",
+        "Extensible tool and agent architecture",
+        "Modern CLI experience using Clack",
+        "Supports multiple frontends and integrations",
+      ],
+      techStack: {
+        frontend: ["Next.js", "React", "Tailwind CSS", "shadcn/ui"],
+        database: ["PostgreSQL", "Neon", "Prisma"],
+        backend: ["Node.js", "Prisma", "Better Auth"],
+        ai: ["ai-sdk/google", "Google Gemini", "Zod"],
+        cli: ["Node.js", "Clack", "Chalk"],
+        tools: ["Git", "VS Code", "Prisma Migrate", "dotenv"],
+      },
+    },
   ];
 
   // Helper function to get tech icons for a project
@@ -324,6 +436,20 @@ const Projects = () => {
     );
   };
 
+  const handleLoadMore = () => {
+    setVisibleCount((prevCount) => prevCount + 3);
+  };
+
+  const handleProjectClick = (project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedProject(null);
+  };
+
   return (
     <section id="projects" className="py-10 relative overflow-hidden">
       <div className="absolute inset-0 -z-10 h-full w-full bg-[#F5E6CC]">
@@ -385,13 +511,14 @@ const Projects = () => {
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
         >
-          {filteredProjects.map((project, index) => (
+          {filteredProjects.slice(0, visibleCount).map((project, index) => (
             <motion.div
               key={project.id}
               className="group relative"
               whileHover="hover"
               onMouseEnter={() => setHoveredProject(project.id)}
               onMouseLeave={() => setHoveredProject(null)}
+              onClick={() => handleProjectClick(project)}
             >
               <motion.div className="bg-white rounded-2xl shadow-xl border border-[#F5E6CC] overflow-hidden hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
                 {/* Project Image/Placeholder */}
@@ -405,7 +532,7 @@ const Projects = () => {
                   ) : (
                     <div
                       className={`w-full h-full flex items-center justify-center bg-gradient-to-br ${getCategoryColor(
-                        project.category
+                        project.category,
                       )}`}
                     >
                       <div className="text-white text-center">
@@ -427,6 +554,7 @@ const Projects = () => {
                         className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-black hover:bg-gray-100 shadow-lg"
                         whileHover="hover"
                         whileTap="tap"
+                        onClick={(e) => e.stopPropagation()}
                       >
                         <FaGithub size={18} />
                       </motion.a>
@@ -438,6 +566,7 @@ const Projects = () => {
                           className="w-12 h-12 bg-[#DC2626] rounded-full flex items-center justify-center text-white hover:bg-[#B91C1C] shadow-lg"
                           whileHover="hover"
                           whileTap="tap"
+                          onClick={(e) => e.stopPropagation()}
                         >
                           <FaExternalLinkAlt size={16} />
                         </motion.a>
@@ -537,26 +666,127 @@ const Projects = () => {
               </motion.div>
             </motion.div>
           ))}
+
+          {visibleCount < filteredProjects.length && (
+            <div className="col-span-full text-center mt-4">
+              <motion.button
+                onClick={handleLoadMore}
+                className="px-6 py-3 bg-[#DC2626] text-black rounded-full font-semibold transition-all duration-300 hover:bg-[#B91C1C] flex items-center justify-center gap-2 mx-auto"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <FaEye className="animate-pulse" />
+                Load More Projects
+              </motion.button>
+            </div>
+          )}
         </motion.div>
 
-        <motion.div
-          className="text-center mt-10"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.1, delay: 0.3 }}
-        >
-          <motion.a
-            href="https://github.com/Rohit03022006"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 mt-8 bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-200"
-            whileHover="hover"
-            whileTap="tap"
+        {/* Project Detail Modal */}
+        {isModalOpen && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70"
+            onClick={handleCloseModal}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
           >
-            <FaGithub />
-            Explore All Projects on GitHub
-          </motion.a>
-        </motion.div>
+            <motion.div
+              className="bg-gradient-to-br from-[#F5E6CC] via-[#FDF5E6] to-[#F5E6CC] opacity-90 rounded-2xl shadow-xl w-full max-w-4xl relative overflow-hidden
+           flex flex-col md:flex-row max-h-[90vh]"
+              onClick={(e) => e.stopPropagation()}
+              initial={{ y: "-50px", opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: "-50px", opacity: 0 }}
+            >
+              <button
+                className="absolute top-4 right-4 z-20 bg-white rounded-full p-2 shadow-md
+             text-gray-600 hover:text-black transition"
+                onClick={handleCloseModal}
+                aria-label="Close modal"
+              >
+                <FaTimes size={18} />
+              </button>
+
+              {selectedProject.image && (
+                <div className="w-full md:w-1/2 h-56 md:h-auto">
+                  <motion.img
+                    src={selectedProject.image}
+                    alt={selectedProject.title}
+                    className="w-full h-full object-cover rounded-lg"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                  />
+                </div>
+              )}
+
+              <div className="w-full md:w-1/2 p-6 overflow-y-auto">
+                <h2 className="text-2xl font-bold text-black mb-2">
+                  {selectedProject.title}
+                </h2>
+
+                <p className="text-[#666666] mb-4 leading-relaxed">
+                  {selectedProject.description}
+                </p>
+
+                <h3 className="text-lg font-semibold text-black mb-2">
+                  Features:
+                </h3>
+                <ul className="list-disc list-inside mb-4">
+                  {selectedProject.features &&
+                    selectedProject.features.map((feature, index) => (
+                      <li key={index} className="text-[#666666]">
+                        {feature}
+                      </li>
+                    ))}
+                </ul>
+
+                <h3 className="text-lg font-semibold text-black mb-2">
+                  Tech Stack:
+                </h3>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {selectedProject.techIcons &&
+                    selectedProject.techIcons.map((Icon, index) => (
+                      <div
+                        key={index}
+                        className="w-10 h-10 bg-[#FEE2E2] rounded-lg flex items-center justify-center text-[#DC2626] transition-transform duration-200 hover:scale-110"
+                      >
+                        <Icon size={18} />
+                      </div>
+                    ))}
+                </div>
+
+                <div className="flex gap-4">
+                  <motion.a
+                    href={selectedProject.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 bg-gray-100 text-gray-700 py-2 px-4 rounded-lg text-sm font-semibold hover:bg-gray-200 transition-colors duration-200 flex items-center justify-center gap-2"
+                    whileHover="hover"
+                    whileTap="tap"
+                  >
+                    <FaGithub size={16} />
+                    View Code
+                  </motion.a>
+                  {selectedProject.liveUrl && (
+                    <motion.a
+                      href={selectedProject.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 bg-[#DC2626] text-white py-2 px-4 rounded-lg text-sm font-semibold hover:bg-[#B91C1C] transition-colors duration-200 flex items-center justify-center gap-2"
+                      whileHover="hover"
+                      whileTap="tap"
+                    >
+                      <FaExternalLinkAlt size={14} />
+                      Live Demo
+                    </motion.a>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
       </div>
 
       <style jsx>{`

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaTools , FaCode, FaDatabase } from "react-icons/fa";
+import { FaTools, FaCode, FaDatabase } from "react-icons/fa";
 import { GiServerRack } from "react-icons/gi";
 import { motion } from "framer-motion";
 import { ImInfinite } from "react-icons/im";
@@ -30,25 +30,22 @@ const Skills_Technologies = () => {
       category: "devops",
     },
     {
+      name: "java",
+      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original-wordmark.svg",
+      category: "backend",
+    },
+    {
       name: "Bash",
       icon: "https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg",
       category: "devops",
     },
-    {
-      name: "Bootstrap",
-      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg",
-      category: "frontend",
-    },
+   
     {
       name: "C",
       icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg",
       category: "backend",
     },
-    {
-      name: "C++",
-      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg",
-      category: "backend",
-    },
+   
     {
       name: "CSS3",
       icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg",
@@ -164,11 +161,7 @@ const Skills_Technologies = () => {
       icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg",
       category: "backend",
     },
-    {
-      name: "MLflow",
-      icon: "https://raw.githubusercontent.com/mlflow/mlflow/refs/heads/master/assets/logo.svg",
-      category: "tools",
-    },
+   
     {
       name: "Terraform",
       icon: "https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg",
@@ -200,6 +193,11 @@ const Skills_Technologies = () => {
       category: "database",
     },
     {
+      name: "PostgreSQL",
+      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg",
+      category: "database",
+    },
+    {
       name: "Firebase",
       icon: "https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg",
       category: "database",
@@ -224,11 +222,7 @@ const Skills_Technologies = () => {
       icon: "https://www.vectorlogo.zone/logos/github/github-icon.svg",
       category: "tools",
     },
-    {
-      name: "Selenium",
-      icon: "https://raw.githubusercontent.com/SeleniumHQ/selenium/trunk/common/images/selenium_logo_mark_green.svg",
-      category: "tools",
-    },
+
   ];
 
   const duplicatedTechnologies = [...technologies, ...technologies];
@@ -255,7 +249,6 @@ const Skills_Technologies = () => {
     },
   };
 
-
   return (
     <section
       id="skills"
@@ -275,7 +268,8 @@ const Skills_Technologies = () => {
             Skills & <span className="text-[#DC2626]">Technologies</span>
           </h2>
           <p className="text-xl text-[#666666] max-w-2xl mx-auto leading-relaxed">
-            A comprehensive toolkit of technologies and frameworks I use to build modern, scalable applications
+            A comprehensive toolkit of technologies and frameworks I use to
+            build modern, scalable applications
           </p>
         </motion.div>
 
@@ -303,7 +297,9 @@ const Skills_Technologies = () => {
                       title={tech.name}
                     />
                   </div>
-                  <span className="text-sm font-medium text-[#666666] mt-2">{tech.name}</span>
+                  <span className="text-sm font-medium text-[#666666] mt-2">
+                    {tech.name}
+                  </span>
                 </motion.div>
               ))}
             </div>
@@ -345,7 +341,9 @@ const Skills_Technologies = () => {
                       alt={tech.name}
                       className="w-5 h-5 flex-shrink-0"
                     />
-                    <span className="text-sm font-medium text-black truncate">{tech.name}</span>
+                    <span className="text-sm font-medium text-black truncate">
+                      {tech.name}
+                    </span>
                   </motion.div>
                 ))}
             </div>
@@ -359,7 +357,7 @@ const Skills_Technologies = () => {
           >
             <div className="flex items-center mb-6">
               <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mr-4">
-                <GiServerRack  className="text-2xl text-green-500" />
+                <GiServerRack className="text-2xl text-green-500" />
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-black">Backend</h3>
@@ -380,7 +378,9 @@ const Skills_Technologies = () => {
                       alt={tech.name}
                       className="w-5 h-5 flex-shrink-0"
                     />
-                    <span className="text-sm font-medium text-black truncate">{tech.name}</span>
+                    <span className="text-sm font-medium text-black truncate">
+                      {tech.name}
+                    </span>
                   </motion.div>
                 ))}
             </div>
@@ -395,10 +395,7 @@ const Skills_Technologies = () => {
             </div>
             <div className="grid grid-cols-2 gap-3">
               {technologies
-                .filter(
-                  (tech) =>
-                    tech.category === "database"
-                )
+                .filter((tech) => tech.category === "database")
                 .map((tech, index) => (
                   <motion.div
                     key={index}
@@ -410,7 +407,9 @@ const Skills_Technologies = () => {
                       alt={tech.name}
                       className="w-5 h-5 flex-shrink-0"
                     />
-                    <span className="text-sm font-medium text-black truncate">{tech.name}</span>
+                    <span className="text-sm font-medium text-black truncate">
+                      {tech.name}
+                    </span>
                   </motion.div>
                 ))}
             </div>
@@ -424,7 +423,7 @@ const Skills_Technologies = () => {
           >
             <div className="flex items-center mb-6">
               <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mr-4">
-                <ImInfinite   className="text-2xl text-black" />
+                <ImInfinite className="text-2xl text-black" />
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-black">DevOps</h3>
@@ -445,7 +444,9 @@ const Skills_Technologies = () => {
                       alt={tech.name}
                       className="w-5 h-5 flex-shrink-0"
                     />
-                    <span className="text-sm font-medium text-black truncate">{tech.name}</span>
+                    <span className="text-sm font-medium text-black truncate">
+                      {tech.name}
+                    </span>
                   </motion.div>
                 ))}
             </div>
@@ -459,7 +460,7 @@ const Skills_Technologies = () => {
           >
             <div className="flex items-center mb-6">
               <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mr-4">
-                <FaTools  className="text-2xl text-amber-500" />
+                <FaTools className="text-2xl text-amber-500" />
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-black">Tools</h3>
@@ -468,10 +469,7 @@ const Skills_Technologies = () => {
             </div>
             <div className="grid grid-cols-2 gap-3">
               {technologies
-                .filter(
-                  (tech) =>
-                     tech.category === "tools"
-                )
+                .filter((tech) => tech.category === "tools")
                 .map((tech, index) => (
                   <motion.div
                     key={index}
@@ -483,7 +481,9 @@ const Skills_Technologies = () => {
                       alt={tech.name}
                       className="w-5 h-5 flex-shrink-0"
                     />
-                    <span className="text-sm font-medium text-black truncate">{tech.name}</span>
+                    <span className="text-sm font-medium text-black truncate">
+                      {tech.name}
+                    </span>
                   </motion.div>
                 ))}
             </div>
