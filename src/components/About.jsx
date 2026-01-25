@@ -165,7 +165,7 @@ const About = () => {
                     </div>
                     <div>
                       <a 
-                        href="https://leetcode.com/u/rohit_xten/"
+                        href="https://leetcode.com/u/v53poaT0E0/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-black hover:text-[#DC2626] transition-colors font-semibold"
@@ -407,5 +407,6 @@ const About = () => {
     </section>
   );
 };
+
 
 export default About;
