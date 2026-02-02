@@ -2,16 +2,17 @@ import React, { useState, useEffect } from "react";
 import {
   FaCode,
   FaEnvelope,
-  FaGraduationCap,
+
   FaAward,
   FaLightbulb,
-  FaRocket,
+
   FaUser,
   FaBriefcase,
-  FaLinkedin, 
+  FaLinkedin,
   FaGithub,
   FaChartLine,
 } from "react-icons/fa";
+import { HiOutlineLightBulb } from "react-icons/hi";
 import { motion } from "framer-motion";
 
 const About = () => {
@@ -41,7 +42,7 @@ const About = () => {
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(#DC2626_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.03]"></div>
-      
+
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#F5E6CC] via-transparent to-[#FDF5E6] opacity-60"></div>
 
@@ -56,12 +57,12 @@ const About = () => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-black">
             About <span className="text-[#DC2626]">Me</span>
           </h2>
-          
+
           <p className="text-base sm:text-lg md:text-xl text-[#666666] max-w-3xl mx-auto leading-relaxed mb-8">
-            A passionate and dedicated Computer Science student specializing in Full Stack Development 
+            A passionate and dedicated Computer Science student specializing in Full Stack Development
             and DevOps, with a strong foundation in building scalable, efficient, and user-friendly applications.
           </p>
-          
+
           <div className="inline-flex items-center gap-4 bg-white px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-md text-sm sm:text-base">
             <FaUser className="text-[#DC2626]" />
             <span className="text-black font-medium">Open to Internship Opportunities</span>
@@ -82,13 +83,13 @@ const About = () => {
                 <div>
                   <h3 className="text-xl sm:text-2xl font-bold text-black mb-2">My Journey</h3>
                   <p className="text-sm sm:text-base text-[#666666]">
-                    Currently pursuing my Bachelor's degree while actively building real-world projects 
-                    and contributing to open source. I believe in continuous learning and applying 
+                    Currently pursuing my Bachelor's degree while actively building real-world projects
+                    and contributing to open source. I believe in continuous learning and applying
                     theoretical knowledge to practical solutions.
                   </p>
                 </div>
               </div>
-              
+
               <div className="grid md:grid-cols-2 gap-6 mt-8">
                 <div className="bg-[#FEF3C7] p-4 rounded-xl">
                   <div className="flex items-center mb-2">
@@ -104,7 +105,7 @@ const About = () => {
                     Specializing in MERN stack development, cloud infrastructure, and CI/CD pipelines.
                   </p>
                 </div>
-                
+
                 <div className="bg-[#DCFCE7] p-4 rounded-xl">
                   <div className="flex items-center mb-2">
                     <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center mr-3">
@@ -130,7 +131,7 @@ const About = () => {
                       <FaLinkedin className="text-[#fdfeff] text-3xl" />
                     </div>
                     <div>
-                      <a 
+                      <a
                         href="https://www.linkedin.com/in/rohit-kumar-783127334"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -147,7 +148,7 @@ const About = () => {
                       <FaGithub className="text-white text-3xl" />
                     </div>
                     <div>
-                      <a 
+                      <a
                         href="https://github.com/Rohit03022006"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -164,7 +165,7 @@ const About = () => {
                       <FaCode className="text-black text-3xl" />
                     </div>
                     <div>
-                      <a 
+                      <a
                         href="https://leetcode.com/u/v53poaT0E0/"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -181,7 +182,7 @@ const About = () => {
                       <FaEnvelope className="text-white text-3xl" />
                     </div>
                     <div>
-                      <a 
+                      <a
                         href="mailto:kumarrohit67476@gmail.com"
                         className="text-black hover:text-[#DC2626] transition-colors font-semibold"
                       >
@@ -194,7 +195,7 @@ const About = () => {
               </div>
             </div>
           </motion.div>
-         
+
           {/* Education Card */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
@@ -203,19 +204,23 @@ const About = () => {
           >
             <div className="bg-white p-8 rounded-2xl shadow-xl border border-[#F5E6CC] hover:shadow-2xl transition-all duration-300 h-full">
               <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-[#DBEAFE] rounded-xl flex items-center justify-center mr-4">
-                  <FaGraduationCap className="text-2xl text-blue-600" />
+                <div className="w-16 h-16 bg-[#DBEAFE] rounded-xl flex items-center justify-center mr-4">
+                  <img src="/VIPS_Logo.png" alt="VIPS_Logo" className="w-16 h-16" />
                 </div>
-                <h3 className="text-2xl font-bold text-black">Education</h3>
+                <h3 className="text-2xl font-bold text-black ml-auto">Education</h3>
+                <div className="ml-auto w-16 h-16 flex items-center justify-center">
+                  <img src="/GGSIU_Logo.png" alt="GGSIPU_Logo" className="w-16 h-16" />
+                </div>
+
               </div>
-              
+
               <div className="space-y-6">
                 <div className="pb-6 border-b border-[#F5E6CC]">
                   <h4 className="font-bold text-lg text-black mb-1">
                     B.Tech in Computer Science & Applied Mathematics
                   </h4>
-                  <a 
-                    href="https://www.vips.edu/" 
+                  <a
+                    href="https://www.vips.edu/"
                     className="text-[#333333] hover:text-[#DC2626] hover:underline transition-colors font-medium mb-2 block"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -229,7 +234,7 @@ const About = () => {
                     <span className="text-sm text-[#666666]">New Delhi, India</span>
                   </div>
                 </div>
-                
+
                 <div>
                   <h5 className="font-bold text-black mb-3">Key Coursework:</h5>
                   <div className="flex flex-wrap gap-2">
@@ -254,14 +259,14 @@ const About = () => {
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <div className="bg-white p-6 rounded-2xl shadow-xl border border-[#F5E6CC] hover:shadow-2xl transition-all duration-300 h-full">
+            <div className="bg-white p-6 rounded-2xl shadow-xl border border-[#F5E6CC] hover:shadow-2xl transition-all duration-300 ">
               <div className="flex items-center mb-6">
                 <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center mr-3">
-                  <FaEnvelope className="text-lg text-green-600" />
+                  <FaEnvelope className="text-lg text-[#DC2626]" />
                 </div>
                 <h3 className="text-xl font-bold text-black">Ask Me About</h3>
               </div>
-              
+
               <ul className="space-y-4">
                 {[
                   "MERN Stack Development",
@@ -269,11 +274,10 @@ const About = () => {
                   "Backend Architecture",
                   "API Design & Development",
                   "Cloud Infrastructure (AWS)",
-                  "Database Design & Optimization"
                 ].map((item, index) => (
                   <li key={index} className="flex items-start">
-                    <span className="bg-[#F0FDF4] text-green-600 p-1.5 rounded-lg mr-3 mt-0.5 flex-shrink-0">
-                      <FaLightbulb className="text-sm" />
+                    <span className="bg-[#F0FDF4] text-[#DC2626] p-1.5 rounded-lg mr-3 mt-0.5 flex-shrink-0">
+                      <HiOutlineLightBulb className="text-sm w-5 h-5" />
                     </span>
                     <span className="text-[#333333]">{item}</span>
                   </li>
@@ -288,14 +292,14 @@ const About = () => {
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <div className="bg-white p-6 rounded-2xl shadow-xl border border-[#F5E6CC] hover:shadow-2xl transition-all duration-300 h-full">
+            <div className="bg-white p-6 rounded-2xl shadow-xl border border-[#F5E6CC] hover:shadow-2xl transition-all duration-300 ">
               <div className="flex items-center mb-6">
-                <div className="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center mr-3">
-                  <FaCode className="text-lg text-purple-600" />
+                <div className="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center mr-3">
+                  <FaCode className="text-lg text-gray-600" />
                 </div>
                 <h3 className="text-xl font-bold text-black">Currently Learning</h3>
               </div>
-              
+
               <ul className="space-y-4">
                 {[
                   "Advanced Kubernetes & Docker",
@@ -303,11 +307,12 @@ const About = () => {
                   "Cloud Native Technologies",
                   "System Design Patterns",
                   "Advanced Backend Development",
-                  "Microservices Architecture"
+                  "Microservices Architecture",
+                  "Database Design & Optimization"
                 ].map((item, index) => (
                   <li key={index} className="flex items-start">
-                    <span className="bg-[#F3E8FF] text-purple-600 p-1.5 rounded-lg mr-3 mt-0.5 flex-shrink-0">
-                      <FaRocket className="text-sm" />
+                    <span className="bg-[#F3E8FF] text-gray-600 p-1.5 rounded-lg mr-3 mt-0.5 flex-shrink-0">
+                      <FaChartLine className="text-sm w-5 h-5" />
                     </span>
                     <span className="text-[#333333]">{item}</span>
                   </li>
@@ -322,14 +327,14 @@ const About = () => {
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            <div className="bg-white p-6 rounded-2xl shadow-xl border border-[#F5E6CC] hover:shadow-2xl transition-all duration-300 h-full">
+            <div className="bg-white p-6 rounded-2xl shadow-xl border border-[#F5E6CC] hover:shadow-2xl transition-all duration-300 ">
               <div className="flex items-center mb-6">
                 <div className="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center mr-3">
-                  <FaAward className="text-lg text-amber-600" />
+                  <FaAward className="text-lg text-amber-600  " />
                 </div>
                 <h3 className="text-xl font-bold text-black">Certifications</h3>
               </div>
-              
+
               <ul className="space-y-4 max-h-96 overflow-y-auto pr-2">
                 {[
                   {
@@ -339,7 +344,7 @@ const About = () => {
                   },
                   {
                     name: "JavaScript Algorithms & Data Structures",
-                    provider: "freeCodeCamp", 
+                    provider: "freeCodeCamp",
                     link: "https://www.freecodecamp.org/certification/rohit_xten/javascript-algorithms-and-data-structures-v8"
                   },
                   {
@@ -365,18 +370,18 @@ const About = () => {
                   },
                   {
                     name: "Docker Certified Associate",
-                    status: "ongoing", 
+                    status: "ongoing",
                     link: null
                   }
                 ].map((cert, index) => (
                   <li key={index} className="flex items-start pb-3 border-b border-[#F5E6CC] last:border-0">
                     <span className="bg-[#FEF3C7] text-amber-600 p-1.5 rounded-lg mr-3 mt-0.5 flex-shrink-0">
-                      <FaAward className="text-sm" />
+                      <FaAward className="text-sm w-5 h-5" />
                     </span>
                     <div className="flex-1">
                       <div className="flex justify-between items-start">
                         {cert.link ? (
-                          <a 
+                          <a
                             href={cert.link}
                             target="_blank"
                             rel="noopener noreferrer"

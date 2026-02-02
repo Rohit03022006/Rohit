@@ -64,7 +64,7 @@ const Footer = () => {
     { name: "MERN Stack", icon: <FaCode className="text-sm" /> },
     { name: "DevOps", icon: <FaServer className="text-sm" /> },
     { name: "React.js", icon: <FaCode className="text-sm" /> },
-    { name: "Node.js", icon: <FaServer className="text-sm" /> },
+    { name: "Java", icon: <FaServer className="text-sm" /> },
     { name: "DSA", icon: <FaCode className="text-sm" /> },
   ];
 

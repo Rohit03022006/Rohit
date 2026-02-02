@@ -198,11 +198,6 @@ const Skills_Technologies = () => {
       category: "database",
     },
     {
-      name: "Firebase",
-      icon: "https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg",
-      category: "database",
-    },
-    {
       name: "Ansible",
       icon: "https://www.vectorlogo.zone/logos/ansible/ansible-icon.svg",
       category: "devops",

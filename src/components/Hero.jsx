@@ -206,7 +206,7 @@ const Hero = () => {
                 {[
                   { icon: FaGithub, href: "https://github.com/Rohit03022006", color: "bg-gray-900", label: "GitHub" },
                   { icon: FaLinkedin, href: "https://www.linkedin.com/in/rohit-kumar-783127334", color: "bg-[#0077B5]", label: "LinkedIn" },
-                  { icon: FaInstagram, href: "https://instagram.com/_rohit_xten", color: "bg-gradient-to-r from-[#F58529] via-[#DD2A7B] to-[#8134AF]", label: "Instagram" },
+                  { icon: FaInstagram, href: "https://instagram.com/_rohit_xten", color: "bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF]", label: "Instagram" },
                 ].map((social, index) => (
                   <motion.a
                     key={index}
@@ -256,7 +256,7 @@ const Hero = () => {
               {[
                 { label: "Projects", value: "6+" },
                 { label: "Technologies", value: "15+" },
-                { label: "Experience", value: "2 Years" },
+                { label: "Experience", value: "1.5+ Years" },
               ].map((stat, index) => (
                 <motion.div
                   key={index}
@@ -283,11 +283,8 @@ const Hero = () => {
           >
             <div className="relative">
               <motion.div
-                className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl border-8 border-white"
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                variants={floatVariants}
-                animate="animate"
+                className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded overflow-hidden shadow-2xl border-3"
+                whileHover={{ scale: 1.02 }}                
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-[#DC2626]/10 to-transparent z-10"></div>
                 <img
@@ -295,40 +292,6 @@ const Hero = () => {
                   alt="Programmer GIF"
                   className="w-full h-full object-cover"
                 />
-              </motion.div>
-
-              {/* Floating Tags */}
-              <motion.div
-                className="absolute -top-4 sm:-top-6 -right-4 sm:-right-6 bg-white p-3 sm:p-4 rounded-2xl shadow-2xl border border-[#F5E6CC]"
-                variants={floatVariants}
-                animate="animate"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[#FEE2E2] rounded-lg flex items-center justify-center">
-                    <FaCode className="text-[#DC2626] text-sm sm:text-lg" />
-                  </div>
-                  <div>
-                    <div className="font-bold text-black text-sm sm:text-base">MERN Stack</div>
-                    <div className="text-xs text-[#666666]">Full Stack Expert</div>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                className="absolute -bottom-4 sm:-bottom-6 -left-4 sm:-left-6 bg-white p-3 sm:p-4 rounded-2xl shadow-2xl border border-[#F5E6CC]"
-                variants={floatVariants}
-                animate="animate"
-                transition={{ delay: 0.5 }}
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[#DBEAFE] rounded-lg flex items-center justify-center">
-                    <IoMdInfinite  className="text-black text-sm sm:text-lg " />
-                  </div>
-                  <div>
-                    <div className="font-bold text-black text-sm sm:text-base">DevOps</div>
-                    <div className="text-xs text-[#666666]">Cloud & CI/CD</div>
-                  </div>
-                </div>
               </motion.div>
             </div>
           </motion.div>
