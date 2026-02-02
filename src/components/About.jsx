@@ -209,7 +209,7 @@ const About = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-black ml-auto">Education</h3>
                 <div className="ml-auto w-16 h-16 flex items-center justify-center">
-                  <img src="/GGSIU_Logo.png" alt="GGSIPU_Logo" className="w-16 h-16" />
+                  <img src="/GGSIPU_Logo.png" alt="GGSIPU_Logo" className="w-16 h-16" />
                 </div>
 
               </div>
@@ -415,3 +415,4 @@ const About = () => {
 
 
 export default About;
+
