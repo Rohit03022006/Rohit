@@ -286,7 +286,6 @@ const Projects = () => {
         "REST API",
         "JWT Authentication",
         "Rate Limiting",
-        "URL Shortening",
       ],
       category: "backend",
       featured: true,
